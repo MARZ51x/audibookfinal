@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "180444564748",
+    "project_id": "login-audibook",
+    "storage_bucket": "login-audibook.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180444564748:android:d7ee31d32e807c17fc0d29",
+        "android_client_info": {
+          "package_name": "com.zentech.audibookfinalv"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180444564748-vm5gi9lg9g4cvrcmm5g26lukqda90vr2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDp5HwtFoQNY0jSUpCke8O6YA_QvOJMmjU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180444564748-vm5gi9lg9g4cvrcmm5g26lukqda90vr2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
