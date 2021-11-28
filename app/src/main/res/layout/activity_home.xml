@@ -5,11 +5,74 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/appbar"
+
+        android:id="@+id/navbar"
         android:layout_width="@dimen/_35sdp"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginStart="0dp"
+
         android:background="@color/black"
-        android:orientation="vertical">
+        android:padding="0dp">
+
+
+        <Button
+
+            android:id="@+id/homebttn"
+            android:layout_width="30dp"
+            android:layout_height="120dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="0dp"
+            android:background="@drawable/nav_button_shape"
+            android:backgroundTint="@color/White"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/_25sdp"
+            android:text="H\no\nm\ne">
+
+        </Button>
+
+        <Button
+            android:id="@+id/schedbttn"
+            android:layout_width="30dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/homebttn"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="0dp"
+            android:background="@drawable/nav_button_shape"
+            android:backgroundTint="@color/Accent"
+            android:orientation="horizontal"
+            android:padding="0dp"
+            android:text="S\nc\nh\ne\nd\nu\nl\ne"
+
+            android:textColor="@color/black">
+
+        </Button>
+
+        <Button
+            android:id="@+id/settingsbttn"
+            android:layout_width="30dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/schedbttn"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="123dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="20dp"
+
+            android:background="@drawable/nav_button_shape"
+            android:backgroundTint="@color/settings"
+            android:orientation="horizontal"
+            android:padding="0dp"
+            android:text="S\ne\nt\nt\ni\nn\ng\ns"
+            android:textColor="@color/black"
+            android:textDirection="">
+
+        </Button>
 
 
     </RelativeLayout>
@@ -74,7 +137,9 @@
             android:id="@+id/NotesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/_75sdp"
+            android:layout_marginEnd="0dp"
             android:clipToPadding="false"
             android:paddingStart="@dimen/_5sdp"
             android:paddingEnd="@dimen/_5sdp" />
@@ -107,5 +172,19 @@
                 android:text="Create">
             </TextView>
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:rotation="-90"
+            android:text="Home"
+            android:textColor="@color/black">
+
+        </TextView>
+
     </RelativeLayout>
 </RelativeLayout>
