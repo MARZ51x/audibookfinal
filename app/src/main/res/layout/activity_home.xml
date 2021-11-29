@@ -6,16 +6,16 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        app:layout_constraintBaseline_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/navbar"
         android:layout_width="@dimen/_35sdp"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
         android:background="@color/black"
-        android:padding="0dp">
+        android:padding="0dp"
+        android:visibility="visible"
+        app:layout_constraintBaseline_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <Button
@@ -30,8 +30,8 @@
             android:orientation="horizontal"
             android:paddingBottom="@dimen/_25sdp"
             android:text="H\no\nm\ne"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         </Button>
 
@@ -71,8 +71,8 @@
             android:padding="0dp"
             android:text="S\ne\nt\nt\ni\nn\ng\ns"
             android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
         </Button>
 
@@ -80,16 +80,18 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/_35sdp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="0dp"
         android:orientation="horizontal">
 
         <LinearLayout
-            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/logo"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp">
+            android:layout_height="@dimen/_50sdp"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:layout_width="@dimen/_170sdp"
@@ -140,20 +142,19 @@
             android:id="@+id/NotesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
             android:paddingStart="@dimen/_5sdp"
             android:paddingEnd="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            app:layout_constraintTop_toBottomOf="@id/layoutSearch"
-            />
+            app:layout_constraintTop_toBottomOf="@id/layoutSearch" />
 
         <LinearLayout
             android:id="@+id/add_note_btn"
             android:layout_width="@dimen/_80sdp"
             android:layout_height="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
             android:background="@drawable/background_searchbar_rounded"
             android:backgroundTint="@color/Accent"
             android:orientation="horizontal"
-            android:layout_marginBottom="@dimen/_15sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent">
@@ -164,17 +165,101 @@
                 android:layout_marginStart="@dimen/_6sdp"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:background="@drawable/ic_add"
-                android:backgroundTint="@color/White">
-            </ImageView>
+                android:backgroundTint="@color/White"></ImageView>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_1sdp"
+                android:text="Create"
                 android:textColor="@color/White"
-                android:textSize="@dimen/_16sdp"
-                android:text="Create">
-            </TextView>
+                android:textSize="@dimen/_16sdp"></TextView>
         </LinearLayout>
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/add_note_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.471"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/NotesRecyclerView"
+            app:layout_constraintVertical_bias="0.235" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/navbar2"
+        android:layout_width="35.00dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="364dp"
+        android:background="@color/black"
+        android:padding="0dp"
+        android:visibility="gone"
+        app:layout_constraintBaseline_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="0dp">
+
+
+        <Button
+            android:id="@+id/homebttn2"
+            android:layout_width="30dp"
+            android:layout_height="120dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/nav_button_shape2"
+            android:backgroundTint="@color/White"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/_25sdp"
+            android:text="H\no\nm\ne"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </Button>
+
+        <Button
+            android:id="@+id/schedbttn2"
+            android:layout_width="30dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/homebttn2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/nav_button_shape2"
+            android:backgroundTint="@color/Accent"
+            android:orientation="horizontal"
+            android:padding="0dp"
+            android:text="S\nc\nh\ne\nd\nu\nl\ne"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/homebttn2">
+
+        </Button>
+
+        <Button
+            android:id="@+id/settingsbttn2"
+            android:layout_width="30dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/schedbttn2"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/nav_button_shape2"
+            android:backgroundTint="@color/settings"
+            android:orientation="horizontal"
+            android:padding="0dp"
+            android:text="S\ne\nt\nt\ni\nn\ng\ns"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+        </Button>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
