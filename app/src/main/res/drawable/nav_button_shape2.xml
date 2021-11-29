@@ -10,6 +10,7 @@
                 android:bottomLeftRadius="@dimen/_1sdp"
                 android:bottomRightRadius="@dimen/_10sdp"
 
+
                 >
 
             </corners>

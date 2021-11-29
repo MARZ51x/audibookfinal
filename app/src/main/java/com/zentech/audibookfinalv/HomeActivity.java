@@ -35,6 +35,7 @@ public class HomeActivity extends AppCompatActivity {
                 ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
                 params.setMarginStart(150);
                 params.setMarginEnd(0);
+
                 main.setLayoutParams(params);
             }
         });
