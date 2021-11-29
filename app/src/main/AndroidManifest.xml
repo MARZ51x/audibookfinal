@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AudibookFinalV">
         <activity
-            android:name=".HomeActivity"
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AudibookFinalV.NoActionBar">
@@ -19,6 +25,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".HomeActivity"
+            android:parentActivityName=".MainActivity">
+
         </activity>
     </application>
 
