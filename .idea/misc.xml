@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/acama/AndroidStudioProjects/audibookfinal/app/src/main/res/drawable-v24/nav_button_shape.xml" value="0.22135416666666666" />
-        <entry key="..\:/Users/acama/AndroidStudioProjects/audibookfinal/app/src/main/res/layout/activity_home.xml" value="0.32864583333333336" />
+        <entry key="..\:/Users/acama/AndroidStudioProjects/audibookfinal/app/src/main/res/layout/activity_home.xml" value="0.22369942196531792" />
+        <entry key="..\:/Users/acama/AndroidStudioProjects/audibookfinal/app/src/main/res/layout/activity_main.xml" value="0.19739583333333333" />
+        <entry key="..\:/Users/acama/AndroidStudioProjects/audibookfinal/app/src/main/res/layout/content_main.xml" value="0.19739583333333333" />
         <entry key="..\:/Users/acama/AndroidStudioProjects/audibookfinal/app/src/main/res/layout/fragment_first.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/acama/AndroidStudioProjects/audibookfinal/app/src/main/res/layout/fragment_second.xml" value="0.2957427536231884" />
         <entry key="..\:/Users/acama/AndroidStudioProjects/audibookfinal/app/src/main/res/menu/menu_main.xml" value="0.36666666666666664" />
@@ -16,5 +18,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.32864583333333336" />
+      </ProjectState>
+    </option>
   </component>
 </project>
