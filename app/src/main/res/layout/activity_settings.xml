@@ -26,7 +26,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/_50sdp"
             android:background="@drawable/nav_button_shape"
-            android:backgroundTint="@color/White"
+            android:backgroundTint="@color/Accent"
             android:orientation="horizontal"
             android:paddingBottom="@dimen/_25sdp"
             android:text="H\no\nm\ne"
@@ -66,7 +66,7 @@
             android:layout_marginBottom="20dp"
 
             android:background="@drawable/nav_button_shape"
-            android:backgroundTint="@color/settings"
+            android:backgroundTint="@color/White"
             android:orientation="horizontal"
             android:padding="0dp"
             android:text="S\ne\nt\nt\ni\nn\ng\ns"
@@ -102,105 +102,120 @@
                 app:tint="@color/black" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/layoutSearch"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_20sdp"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:background="@drawable/background_searchbar_rounded"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="@dimen/_5sdp"
-            android:paddingTop="@dimen/_2sdp"
-            android:paddingEnd="@dimen/_10sdp"
-            app:layout_constraintTop_toBottomOf="@id/logo">
-
-            <ImageView
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_search"
-                app:tint="@color/black" />
-
-            <EditText
-                android:id="@+id/inputSearch"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:hint="Search Note"
-                android:imeOptions="actionDone"
-                android:importantForAutofill="no"
-                android:includeFontPadding="false"
-                android:inputType="text"
-                android:textColorHint="@color/TextHint"
-                android:textSize="@dimen/_13ssp" />
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/NotesRecyclerView"
+        <TextView
+            android:id="@+id/more_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:paddingStart="@dimen/_5sdp"
-            android:paddingEnd="@dimen/_5sdp"
-            app:layout_constraintTop_toBottomOf="@id/layoutSearch" />
-
-        <Button
-            android:id="@+id/add_note_btn"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            android:background="@drawable/background_searchbar_rounded"
-            android:backgroundTint="@color/Accent"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:visibility="invisible">
-
-        </Button>
+            android:text="Settings"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/logo">
+        </TextView>
 
         <LinearLayout
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            android:background="@drawable/background_searchbar_rounded"
-            android:backgroundTint="@color/Accent"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
+            android:id="@+id/dark_mode_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/more_text"
+            app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
-                android:layout_width="@dimen/_15sdp"
-                android:layout_height="@dimen/_15sdp"
-                android:layout_marginStart="@dimen/_6sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:background="@drawable/ic_add"
-                android:backgroundTint="@color/White">
+                android:id="@+id/dark_mode"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/ic_dark_mode"
+                app:tint="@color/black">
             </ImageView>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_1sdp"
-                android:text="Create"
-                android:textColor="@color/White"
-                android:textSize="@dimen/_16sdp">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dark Mode"
+                android:layout_marginStart="@dimen/_5sdp">
             </TextView>
+
+            <Switch
+                android:id="@+id/dark_mode_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_120sdp"
+                android:layout_marginEnd="@dimen/_15sdp">
+            </Switch>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/switching_mode_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/dark_mode_container"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/switching_mode"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/ic_switching"
+                app:tint="@color/black">
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Swicth Navigation"
+                android:layout_marginStart="@dimen/_5sdp">
+            </TextView>
+
+            <Switch
+                android:id="@+id/switching_mode_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_86sdp"
+                android:layout_marginEnd="@dimen/_15sdp">
+            </Switch>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/switching_mode_container"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/about_us"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/ic_about"
+                app:tint="@color/black">
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About Us"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_5sdp">
+            </TextView>
+
         </LinearLayout>
 
         <Switch
             android:id="@+id/switch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/add_note_btn"
+            app:layout_constraintBottom_toTopOf="@+id/add_sched_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.471"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/NotesRecyclerView"
-            app:layout_constraintVertical_bias="0.235" />
+            app:layout_constraintTop_toBottomOf="@+id/SchedRecyclerView"
+            app:layout_constraintVertical_bias="0.235"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -227,13 +242,12 @@
             android:layout_marginTop="64dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/nav_button_shape2"
-            android:backgroundTint="@color/White"
+            android:backgroundTint="@color/Accent"
             android:orientation="horizontal"
             android:paddingBottom="@dimen/_25sdp"
             android:text="H\no\nm\ne"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
         </Button>
 
         <Button
@@ -245,14 +259,13 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/nav_button_shape2"
-            android:backgroundTint="@color/Accent"
+            android:backgroundTint="@color/White"
             android:orientation="horizontal"
             android:padding="0dp"
             android:text="S\nc\nh\ne\nd\nu\nl\ne"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/homebttn2">
-
         </Button>
 
         <Button
@@ -272,7 +285,6 @@
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
-
         </Button>
 
 
