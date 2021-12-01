@@ -8,56 +8,77 @@
     tools:context=".MainActivity">
 
     <RelativeLayout
+        android:id="@+id/centerline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/centerline"
         android:layout_centerInParent="true">
+
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/centerline"
         android:layout_marginLeft="@dimen/_30sdp"
         android:layout_marginRight="@dimen/_30sdp"
-        android:layout_above="@id/centerline"
-        android:layout_marginBottom="@dimen/_150sdp"
+        android:layout_marginBottom="@dimen/_70sdp"
         android:orientation="vertical">
 
-        <TextView
+        <ImageView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="center"
+            android:src="@drawable/login_logo">
+
+        </ImageView>
+
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_40sdp"
             android:text="AudiBook"
-            android:textSize="@dimen/_40ssp"
             android:textColor="@color/Accent"
-            android:textStyle="bold">
-        </TextView>
+            android:textSize="@dimen/_40ssp"
+            android:textStyle="bold"
+            android:src="@drawable/actionbar_no_background"
+            app:tint="@color/black">
+
+        </ImageView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Login to Continue"
+            android:textColor="@color/black"
             android:textSize="@dimen/_15ssp"
-            android:textColor="@color/black" >
+            android:layout_marginTop="@dimen/_25sdp"
+            >
+
         </TextView>
 
     </LinearLayout>
 
+
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/centerline"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:id="@+id/email"
         android:layout_marginLeft="@dimen/_30sdp"
-        android:layout_marginRight="@dimen/_30sdp">
+        android:layout_marginRight="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_10sdp">
 
         <EditText
+            android:id="@+id/loginemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/loginemail"
             android:hint="Enter your e-mail"
-            android:inputType="textEmailAddress">
-        </EditText>
+            android:inputType="textEmailAddress"></EditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -72,9 +93,9 @@
         app:passwordToggleEnabled="true">
 
         <EditText
+            android:id="@+id/loginpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/loginpassword"
             android:hint="Enter your password">
 
         </EditText>
@@ -83,21 +104,24 @@
 
     <RelativeLayout
         android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_30sdp"
         android:layout_below="@id/password"
+        android:layout_alignParentEnd="true"
         android:layout_marginLeft="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="9dp"
         android:layout_marginRight="@dimen/_30sdp"
-        android:background="@drawable/button_design">
+        android:background="@drawable/button_design"
+        android:gravity="">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginStart="@dimen/_8sdp"
-            android:text="Log In"
-            android:textColor="@color/Accent"
+            android:text="LOGIN"
+            android:textColor="@color/White"
             android:textSize="@dimen/_16sdp"
             android:textStyle="bold">
 
@@ -107,15 +131,17 @@
 
     <TextView
         android:id="@+id/gotoforgotpassword"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/login"
         android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="-53dp"
         android:layout_marginRight="@dimen/_20sdp"
         android:text="Forgot Password"
-        android:textAlignment="center"
-        android:textColor="@color/black">
+        android:textAlignment="right"
+        android:textColor="@color/black"
+
+        >
 
     </TextView>
 
