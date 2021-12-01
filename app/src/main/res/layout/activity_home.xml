@@ -22,7 +22,8 @@
         app:layout_constraintBaseline_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
 
         <Button
@@ -38,7 +39,9 @@
             android:paddingBottom="@dimen/_25sdp"
             android:text="H\no\nm\ne"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+
+            >
 
         </Button>
 
@@ -73,7 +76,7 @@
             android:layout_marginBottom="20dp"
 
             android:background="@drawable/nav_button_shape"
-            android:backgroundTint="@color/settings"
+            android:backgroundTint="@color/blue_settings_bttn"
             android:orientation="horizontal"
             android:padding="0dp"
             android:text="S\ne\nt\nt\ni\nn\ng\ns"
@@ -124,7 +127,6 @@
             android:paddingEnd="@dimen/_10sdp"
             app:layout_constraintTop_toBottomOf="@id/logo"
             android:outlineProvider="background"
-
             >
 
             <ImageView
@@ -279,7 +281,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/nav_button_shape2"
-            android:backgroundTint="@color/settings"
+            android:backgroundTint="@color/blue_settings_bttn"
             android:orientation="horizontal"
             android:padding="0dp"
             android:text="S\ne\nt\nt\ni\nn\ng\ns"

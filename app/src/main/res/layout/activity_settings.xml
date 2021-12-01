@@ -29,11 +29,11 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/_50sdp"
             android:background="@drawable/nav_button_shape"
-            android:backgroundTint="@color/White"
+            android:backgroundTint="@color/Accent"
             android:orientation="horizontal"
             android:paddingBottom="@dimen/_25sdp"
             android:text="H\no\nm\ne"
-            android:textColor="@color/White"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
         </Button>

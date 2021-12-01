@@ -69,7 +69,7 @@
             android:layout_marginBottom="20dp"
 
             android:background="@drawable/nav_button_shape"
-            android:backgroundTint="@color/settings"
+            android:backgroundTint="@color/blue_settings_bttn"
             android:orientation="horizontal"
             android:padding="0dp"
             android:text="S\ne\nt\nt\ni\nn\ng\ns"
@@ -254,7 +254,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/nav_button_shape2"
-            android:backgroundTint="@color/settings"
+            android:backgroundTint="@color/blue_settings_bttn"
             android:orientation="horizontal"
             android:padding="0dp"
             android:text="S\ne\nt\nt\ni\nn\ng\ns"
