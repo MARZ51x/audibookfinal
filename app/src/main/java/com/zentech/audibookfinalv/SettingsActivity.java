@@ -10,32 +10,29 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-public class HomeActivity extends AppCompatActivity {
-    private Button button_sched, button_settings, button_sched2, button_settings2;
-
-    ConstraintLayout nav,nav2, main, settings, sched;
+public class SettingsActivity extends AppCompatActivity {
+    private Button button_sched, button_home, button_sched2, button_home2;
+    ConstraintLayout nav, nav2, main;
     Switch aSwitch;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        settings = findViewById(R.id.activity_settings);
-        sched = findViewById(R.id.activity_schedule);
+        setContentView(R.layout.activity_settings);
         main = findViewById(R.id.main);
         nav = findViewById(R.id.navbar);
         nav2 = findViewById(R.id.navbar2);
         aSwitch = findViewById(R.id.switch1);
 
         aSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (aSwitch.isChecked()){
+            if (aSwitch.isChecked()) {
                 nav.setVisibility(View.GONE);
                 nav2.setVisibility(View.VISIBLE);
                 ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
                 params.setMarginStart(0);
                 params.setMarginEnd(150);
                 main.setLayoutParams(params);
-            }else{
+            } else {
                 nav.setVisibility(View.VISIBLE);
                 nav2.setVisibility(View.GONE);
                 ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
@@ -45,7 +42,6 @@ public class HomeActivity extends AppCompatActivity {
                 main.setLayoutParams(params);
             }
         });
-
         button_sched = (Button) findViewById(R.id.schedbttn);
         button_sched.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,11 +49,11 @@ public class HomeActivity extends AppCompatActivity {
                 ScheduleActivity();
             }
         });
-        button_settings = (Button) findViewById(R.id.settingsbttn);
-        button_settings.setOnClickListener(new View.OnClickListener() {
+        button_home = (Button) findViewById(R.id.homebttn);
+        button_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SettingsActivity();
+                HomeActivity();
             }
         });
         button_sched2 = (Button) findViewById(R.id.schedbttn2);
@@ -67,22 +63,23 @@ public class HomeActivity extends AppCompatActivity {
                 ScheduleActivity();
             }
         });
-        button_settings2 = (Button) findViewById(R.id.settingsbttn2);
-        button_settings2.setOnClickListener(new View.OnClickListener() {
+        button_home2 = (Button) findViewById(R.id.homebttn2);
+        button_home2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SettingsActivity();
+                HomeActivity();
             }
         });
     }
-    public void ScheduleActivity(){
+
+    public void ScheduleActivity() {
         Intent intent = new Intent(this, ScheduleActivity.class);
         startActivity(intent);
     }
-    public void SettingsActivity(){
-        Intent intent = new Intent(this, SettingsActivity.class);
+
+    public void HomeActivity() {
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
-
 }
 
