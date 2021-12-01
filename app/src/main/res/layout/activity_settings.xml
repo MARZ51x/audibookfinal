@@ -141,7 +141,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dark Mode"
-                android:layout_marginStart="@dimen/_5sdp">
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textColor="?attr/text_color">
             </TextView>
 
          <!--   <Switch
@@ -185,6 +186,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Swicth Navigation"
+                android:textColor="?attr/text_color"
                 android:layout_marginStart="@dimen/_5sdp">
             </TextView>
 
@@ -219,6 +221,7 @@
                 android:layout_height="wrap_content"
                 android:text="About Us"
                 android:layout_gravity="center"
+                android:textColor="?attr/text_color"
                 android:layout_marginStart="@dimen/_5sdp">
             </TextView>
 
