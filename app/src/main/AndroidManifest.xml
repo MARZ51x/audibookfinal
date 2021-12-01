@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AudibookFinalV">
+        android:theme="@style/Theme.Light">
         <activity
             android:name=".ForgotPassword"
             android:exported="false" />
@@ -19,7 +19,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AudibookFinalV.NoActionBar">
+            android:theme="@style/Theme.Light">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
