@@ -8,6 +8,7 @@ import android.widget.Switch;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class HomeActivity extends AppCompatActivity {
@@ -18,6 +19,17 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        //Check condition
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            //When night mode is equal to yes
+            //set dark theme
+            setTheme(R.style.Theme_Dark);
+        }else {
+            //When night mode is equal to no
+            //Set light theme
+            setTheme(R.style.Theme_Light);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         settings = findViewById(R.id.activity_settings);

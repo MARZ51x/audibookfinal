@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/White"
+    android:background="?attr/page_backgroundColor"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:text="Login to Continue"
             android:textSize="@dimen/_15ssp"
-            android:textColor="@color/NavGrey" >
+            android:textColor="@color/black" >
         </TextView>
 
     </LinearLayout>

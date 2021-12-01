@@ -29,15 +29,13 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="@dimen/_50sdp"
             android:background="@drawable/nav_button_shape"
-            android:backgroundTint="@color/Accent"
+            android:backgroundTint="@color/White"
             android:orientation="horizontal"
             android:paddingBottom="@dimen/_25sdp"
             android:text="H\no\nm\ne"
-            android:textColor="?attr/text_color"
-            android:theme="?attr/text_color"
+            android:textColor="@color/White"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
         </Button>
 
         <Button
@@ -55,7 +53,8 @@
             android:text="S\nc\nh\ne\nd\nu\nl\ne"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/homebttn">
+            app:layout_constraintTop_toBottomOf="@id/homebttn"
+            >
 
         </Button>
 
@@ -67,7 +66,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="123dp"
-            android:layout_marginEnd="1dp"
+            android:layout_marginEnd="0dp"
             android:layout_marginBottom="20dp"
 
             android:background="@drawable/nav_button_shape"
@@ -133,7 +132,9 @@
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_dark_mode"
-                app:tint="?attr/text_color">
+                app:tint="?attr/text_color"
+                android:layout_gravity="center"
+                >
             </ImageView>
 
             <TextView
@@ -176,7 +177,8 @@
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_switching"
-                app:tint="@color/black">
+                app:tint="?attr/text_color"
+                >
             </ImageView>
 
             <TextView
@@ -209,7 +211,7 @@
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_about"
-                app:tint="@color/black">
+                app:tint="?attr/text_color">
             </ImageView>
 
             <TextView
@@ -241,7 +243,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="364dp"
-        android:background="@color/black"
+        android:background="?attr/nav_backgroundColor"
         android:padding="0dp"
         android:visibility="gone"
         app:layout_constraintBaseline_toTopOf="parent"

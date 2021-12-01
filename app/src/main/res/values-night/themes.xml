@@ -14,6 +14,6 @@
         <!-- Customize your theme here. -->
         <item name="page_backgroundColor">#FF001219</item>
         <item name="text_color">#FFFF</item>
-        <item name="nav_backgroundColor">#FF001219</item>
+        <item name="nav_backgroundColor">#202c34</item>
     </style>
 </resources>
