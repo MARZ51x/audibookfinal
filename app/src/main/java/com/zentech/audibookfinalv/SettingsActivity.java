@@ -45,20 +45,23 @@ public class SettingsActivity extends AppCompatActivity {
         switchCompat = (SwitchCompat) findViewById(R.id.bt_switch);
 
         boolean value = true; // default value if no value was found
-
+        int value2 = AppCompatDelegate.MODE_NIGHT_NO;
         final SharedPreferences sharedPreferences = getSharedPreferences("isChecked", 0);
-
+        final SharedPreferences sharedPreferences2 = getSharedPreferences("defaultNightMode", 0);
         value = sharedPreferences.getBoolean("isChecked", value); // retrieve the value of your key
+        value2 = sharedPreferences2.getInt("defaultNightMode", value2);
         switchCompat.setChecked(value);
-
+        AppCompatDelegate.setDefaultNightMode(value2);
         switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     sharedPreferences.edit().putBoolean("isChecked", true).apply();
+                    sharedPreferences2.edit().putInt("defaultNightMode",AppCompatDelegate.MODE_NIGHT_YES).apply();
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 }else {
                     sharedPreferences.edit().putBoolean("isChecked", false).apply();
+                    sharedPreferences2.edit().putInt("defaultNightMode",AppCompatDelegate.MODE_NIGHT_NO).apply();
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 }
             }
