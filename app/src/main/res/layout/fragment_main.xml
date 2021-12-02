@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.zentech.audibookfinalv.view.EmptyRecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="35dp"
+        android:backgroundTint="@color/Accent"
+        android:visibility="gone"
+        app:backgroundTint="@color/black"
+        app:borderWidth="3.5dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_add_sched" />
+    <!-- my comment goes here
+    <LinearLayout
+        android:id="@+id/layoutQuickActions"
+        android:layout_width="269dp"
+        android:layout_height="57dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/background_navigation_bar"
+
+        android:isScrollContainer="false"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/_7sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/HomeSched"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:contentDescription="@string/app_name"
+            android:elevation="@dimen/_10sdp"
+            android:enabled="false"
+            android:src="@drawable/ic_home"
+            app:tint="@color/black" />
+
+        <ImageView
+            android:id="@+id/ScheduleSched"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_35sdp"
+            android:background="@drawable/background_nav_button"
+            android:contentDescription="@string/app_name"
+            android:padding="@dimen/_1sdp"
+            android:src="@drawable/ic_round_calendar_today_24"
+            app:tint="@color/NoteColor5" />
+    </LinearLayout> -->
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
