@@ -1,6 +1,7 @@
 package com.zentech.audibookfinalv;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,26 +23,14 @@ public class ScheduleActivity extends AppCompatActivity {
 
     private Button button;
     ConstraintLayout nav,nav2, main;
-    Switch aSwitch;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        //Check condition
-        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
-            //When night mode is equal to yes
-            //set dark theme
-            setTheme(R.style.Theme_Dark);
-        }else {
-            //When night mode is equal to no
-            //Set light theme
-            setTheme(R.style.Theme_Light);
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
         main = findViewById(R.id.main);
         nav = findViewById(R.id.navbar);
         nav2 = findViewById(R.id.navbar2);
-        aSwitch = findViewById(R.id.switch1);
 
         final FloatingActionButton fab = findViewById(R.id.fab2);
         fab.setOnClickListener((View view) -> {
@@ -52,23 +41,36 @@ public class ScheduleActivity extends AppCompatActivity {
 
         });
 
-        aSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (aSwitch.isChecked()){
-                nav.setVisibility(View.GONE);
-                nav2.setVisibility(View.VISIBLE);
-                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
-                params.setMarginStart(0);
-                params.setMarginEnd(150);
-                main.setLayoutParams(params);
-            }else{
-                nav.setVisibility(View.VISIBLE);
-                nav2.setVisibility(View.GONE);
-                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
-                params.setMarginStart(150);
-                params.setMarginEnd(0);
-                main.setLayoutParams(params);
-            }
-        });
+/////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.Theme_Dark);
+        }else {
+            setTheme(R.style.Theme_Light);
+        }
+/////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
+        boolean valueNav= true;
+        SharedPreferences sharedPreferencesNav = getSharedPreferences("isCheckedNav", 0);
+        valueNav = sharedPreferencesNav.getBoolean("isCheckedNav", valueNav);
+
+        if (valueNav==true) {
+            nav.setVisibility(View.GONE);
+            nav2.setVisibility(View.VISIBLE);
+            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
+            params.setMarginStart(0);
+            params.setMarginEnd(150);
+            main.setLayoutParams(params);
+        } else {
+            nav.setVisibility(View.VISIBLE);
+            nav2.setVisibility(View.GONE);
+            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
+            params.setMarginStart(150);
+            params.setMarginEnd(0);
+            main.setLayoutParams(params);
+        }
+/////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
+
         button_home = (Button) findViewById(R.id.homebttn);
         button_home.setOnClickListener(new View.OnClickListener() {
             @Override

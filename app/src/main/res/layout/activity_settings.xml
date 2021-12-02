@@ -156,7 +156,7 @@
                 android:id="@+id/bt_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_120sdp"
+                android:layout_marginStart="@dimen/_100sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:checked="false"
                 >
@@ -195,8 +195,9 @@
                 android:id="@+id/switch1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_86sdp"
+                android:layout_marginStart="@dimen/_66sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
+                android:checked="false"
                 >
             </Switch>
         </LinearLayout>

@@ -23,17 +23,6 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-
-        //Check condition
-        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
-            //When night mode is equal to yes
-            //set dark theme
-            setTheme(R.style.Theme_Dark);
-        }else {
-            //When night mode is equal to no
-            //Set light theme
-            setTheme(R.style.Theme_Light);
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         main = findViewById(R.id.main);
@@ -41,9 +30,8 @@ public class SettingsActivity extends AppCompatActivity {
         nav2 = findViewById(R.id.navbar2);
         aSwitch = findViewById(R.id.switch1);
 
-        // Switch
         switchCompat = (SwitchCompat) findViewById(R.id.bt_switch);
-
+/////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
         boolean value = true; // default value if no value was found
         int value2 = AppCompatDelegate.MODE_NIGHT_NO;
         final SharedPreferences sharedPreferences = getSharedPreferences("isChecked", 0);
@@ -52,6 +40,13 @@ public class SettingsActivity extends AppCompatActivity {
         value2 = sharedPreferences2.getInt("defaultNightMode", value2);
         switchCompat.setChecked(value);
         AppCompatDelegate.setDefaultNightMode(value2);
+
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.Theme_Dark);
+        }else {
+            setTheme(R.style.Theme_Light);
+        }
+
         switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -66,34 +61,34 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
+/////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
+        boolean valueNav = true;
+        final SharedPreferences sharedPreferencesNav = getSharedPreferences("isCheckedNav", 0);
+        valueNav = sharedPreferencesNav.getBoolean("isCheckedNav", valueNav); // retrieve the value of your key
+        aSwitch.setChecked(valueNav);
 
+        if (valueNav) {
+            nav.setVisibility(View.GONE);
+            nav2.setVisibility(View.VISIBLE);
+            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
+            params.setMarginStart(0);
+            params.setMarginEnd(150);
+            main.setLayoutParams(params);
+        } else {
+            nav.setVisibility(View.VISIBLE);
+            nav2.setVisibility(View.GONE);
+            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
+            params.setMarginStart(150);
+            params.setMarginEnd(0);
+            main.setLayoutParams(params);
 
-
-        //Assign Variable
-        //switchCompat =findViewById(R.id.bt_switch);
-       /* switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //Check condition
-                if(isChecked){
-                    sharedPreferences.edit().putBoolean("isChecked", true).apply();
-                    //when swtich button is checked
-                    // set night mde
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                }else{
-                    sharedPreferences.edit().putBoolean("isChecked", false).apply();
-                    //when switch button is checked
-                    //set light mode
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                }
-            }
-        });
-*/
-
+        }
 
         aSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (aSwitch.isChecked()) {
+                sharedPreferencesNav.edit().putBoolean("isCheckedNav", true).apply();
                 nav.setVisibility(View.GONE);
                 nav2.setVisibility(View.VISIBLE);
                 ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
@@ -101,15 +96,17 @@ public class SettingsActivity extends AppCompatActivity {
                 params.setMarginEnd(150);
                 main.setLayoutParams(params);
             } else {
+                sharedPreferencesNav.edit().putBoolean("isCheckedNav", false).apply();
                 nav.setVisibility(View.VISIBLE);
                 nav2.setVisibility(View.GONE);
                 ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
                 params.setMarginStart(150);
                 params.setMarginEnd(0);
-
                 main.setLayoutParams(params);
             }
         });
+/////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
+
         button_sched = (Button) findViewById(R.id.schedbttn);
         button_sched.setOnClickListener(new View.OnClickListener() {
             @Override

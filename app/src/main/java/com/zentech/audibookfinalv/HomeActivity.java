@@ -1,6 +1,7 @@
 package com.zentech.audibookfinalv;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,21 +16,9 @@ public class HomeActivity extends AppCompatActivity {
     private Button button_sched, button_settings, button_sched2, button_settings2;
 
     ConstraintLayout nav,nav2, main, settings, sched;
-    Switch aSwitch;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        //Check condition
-        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
-            //When night mode is equal to yes
-            //set dark theme
-            setTheme(R.style.Theme_Dark);
-        }else {
-            //When night mode is equal to no
-            //Set light theme
-            setTheme(R.style.Theme_Light);
-        }
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         settings = findViewById(R.id.activity_settings);
@@ -37,26 +26,48 @@ public class HomeActivity extends AppCompatActivity {
         main = findViewById(R.id.main);
         nav = findViewById(R.id.navbar);
         nav2 = findViewById(R.id.navbar2);
-        aSwitch = findViewById(R.id.switch1);
 
-        aSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (aSwitch.isChecked()){
-                nav.setVisibility(View.GONE);
-                nav2.setVisibility(View.VISIBLE);
-                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
-                params.setMarginStart(0);
-                params.setMarginEnd(150);
-                main.setLayoutParams(params);
-            }else{
-                nav.setVisibility(View.VISIBLE);
-                nav2.setVisibility(View.GONE);
-                ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
-                params.setMarginStart(150);
-                params.setMarginEnd(0);
+/////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
+        int value2 = AppCompatDelegate.MODE_NIGHT_NO;
 
-                main.setLayoutParams(params);
-            }
-        });
+        SharedPreferences mPrefs = getSharedPreferences("defaultNightMode", 0);
+        value2 = mPrefs.getInt("defaultNightMode", value2);
+
+        if (value2==2) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.Theme_Dark);
+        }else {
+            setTheme(R.style.Theme_Light);
+        }
+/////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
+        boolean valueNav= true;
+        SharedPreferences sharedPreferencesNav = getSharedPreferences("isCheckedNav", 0);
+        valueNav = sharedPreferencesNav.getBoolean("isCheckedNav", valueNav);
+
+        if (valueNav) {
+            nav.setVisibility(View.GONE);
+            nav2.setVisibility(View.VISIBLE);
+            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
+            params.setMarginStart(0);
+            params.setMarginEnd(150);
+            main.setLayoutParams(params);
+        } else {
+            nav.setVisibility(View.VISIBLE);
+            nav2.setVisibility(View.GONE);
+            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) main.getLayoutParams();
+            params.setMarginStart(150);
+            params.setMarginEnd(0);
+            main.setLayoutParams(params);
+        }
+/////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
+
 
         button_sched = (Button) findViewById(R.id.schedbttn);
         button_sched.setOnClickListener(new View.OnClickListener() {
