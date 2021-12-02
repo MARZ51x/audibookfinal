@@ -115,83 +115,45 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo"></TextView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/SchedRecyclerView"
+        <fragment
+            android:id="@+id/main_fragment"
+            android:name="com.zentech.audibookfinalv.ui.MainFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:paddingStart="@dimen/_5sdp"
-            android:paddingEnd="@dimen/_5sdp"
-            app:layout_constraintTop_toBottomOf="@id/sched_text" />
+            android:layout_height="0dp"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="10dp"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            app:layout_constraintTop_toBottomOf="@id/sched_text"
+            app:layout_constraintBottom_toTopOf="@id/fab2"
+            tools:context="com.zentech.audibook.SchedMain" />
 
-        <Button
-            android:id="@+id/add_sched_btn"
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            android:background="@drawable/background_searchbar_rounded"
-            android:backgroundTint="@color/Accent"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:visibility="invisible">
-        </Button>
-
-        <LinearLayout
-            android:layout_width="@dimen/_80sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            android:background="@drawable/background_searchbar_rounded"
-            android:backgroundTint="@color/Accent"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
-
-
-            <LinearLayout
-                android:id="@+id/plus"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_marginStart="@dimen/_6sdp"
-                android:layout_marginTop="@dimen/_3sdp"
-                android:background="@drawable/ic_bell"
-                android:backgroundTint="@color/White"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/_14sdp"
-                    android:layout_height="@dimen/_14sdp"
-                    android:src="@drawable/ic_add"
-                    android:backgroundTint="@color/Accent"
-                    android:layout_gravity="center"
-                    app:tint="@color/Accent"
-                    android:layout_marginStart="3.8dp">
-                </ImageView>
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_1sdp"
-                android:text="Create"
-                android:textColor="@color/White"
-                android:textSize="@dimen/_16sdp">
-            </TextView>
-        </LinearLayout>
 
         <Switch
             android:id="@+id/switch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/add_sched_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.471"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SchedRecyclerView"
-            app:layout_constraintVertical_bias="0.235"/>
+            app:layout_constraintTop_toBottomOf="@+id/main_fragment" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="#FDBE3B"
+            android:padding="@dimen/_5sdp"
+            app:backgroundTint="@color/black"
+            app:borderWidth="3.5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/ic_add_sched" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

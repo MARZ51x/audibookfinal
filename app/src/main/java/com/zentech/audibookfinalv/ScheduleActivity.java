@@ -6,10 +6,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 
+import static com.zentech.audibookfinalv.ui.AddEditAlarmActivity.ADD_ALARM;
+import static com.zentech.audibookfinalv.ui.AddEditAlarmActivity.buildAddEditAlarmActivityIntent;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.zentech.audibookfinalv.util.AlarmUtils;
 
 public class ScheduleActivity extends AppCompatActivity {
     private Button button_home, button_settings, button_home2, button_settings2;
@@ -20,7 +26,6 @@ public class ScheduleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-
         //Check condition
         if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
             //When night mode is equal to yes
@@ -37,6 +42,15 @@ public class ScheduleActivity extends AppCompatActivity {
         nav = findViewById(R.id.navbar);
         nav2 = findViewById(R.id.navbar2);
         aSwitch = findViewById(R.id.switch1);
+
+        final FloatingActionButton fab = findViewById(R.id.fab2);
+        fab.setOnClickListener((View view) -> {
+            AlarmUtils.checkAlarmPermissions(this);
+            Intent intent =new Intent(buildAddEditAlarmActivityIntent(this, ADD_ALARM));
+            startActivity(intent);
+            overridePendingTransition(0, 0);
+
+        });
 
         aSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (aSwitch.isChecked()){
@@ -87,6 +101,7 @@ public class ScheduleActivity extends AppCompatActivity {
     public void HomeActivity(){
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
+        overridePendingTransition(0,0);
         finish();
     }
     public void SettingsActivity(){
