@@ -126,8 +126,7 @@
             android:paddingTop="@dimen/_2sdp"
             android:paddingEnd="@dimen/_10sdp"
             app:layout_constraintTop_toBottomOf="@id/logo"
-            android:outlineProvider="background"
-            >
+            android:outlineProvider="background">
 
             <ImageView
                 android:layout_width="@dimen/_20sdp"

@@ -7,166 +7,190 @@
     android:background="?attr/page_backgroundColor"
     tools:context=".MainActivity">
 
-    <RelativeLayout
+    <!--<RelativeLayout
         android:id="@+id/centerline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    </LinearLayout>
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/centerline"
+        android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/_30sdp"
         android:layout_marginRight="@dimen/_30sdp"
-        android:layout_marginBottom="@dimen/_70sdp"
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/logo_main"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_gravity="center"
-            android:src="@drawable/login_logo">
-
+            android:src="@drawable/login_logo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/_5sdp">
         </ImageView>
 
         <ImageView
+            android:id="@+id/logo_title"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
+            android:src="@drawable/actionbar_no_background"
             android:text="AudiBook"
             android:textColor="@color/Accent"
             android:textSize="@dimen/_40ssp"
             android:textStyle="bold"
-            android:src="@drawable/actionbar_no_background"
-            app:tint="@color/black">
-
-        </ImageView>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo_main"
+            app:tint="@color/black"></ImageView>
 
         <TextView
+            android:id="@+id/login_plain_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_25sdp"
             android:text="Login to Continue"
             android:textColor="@color/black"
             android:textSize="@dimen/_15ssp"
-            android:layout_marginTop="@dimen/_25sdp"
-            >
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo_title"></TextView>
 
-        </TextView>
-
-    </LinearLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/centerline"
-        android:layout_marginLeft="@dimen/_30sdp"
-        android:layout_marginRight="@dimen/_30sdp"
-        android:layout_marginBottom="@dimen/_10sdp">
-
-        <EditText
-            android:id="@+id/loginemail"
+        <LinearLayout
+            android:id="@+id/email_text_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your e-mail"
-            android:inputType="textEmailAddress"></EditText>
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/background_rounded_text_fields"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:outlineProvider="background"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            app:layout_constraintTop_toBottomOf="@id/login_plain_text">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:src="@drawable/ic_mail"
+                app:tint="@color/black"></ImageView>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/centerline"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:id="@+id/password"
-        android:layout_marginLeft="@dimen/_30sdp"
-        android:layout_marginRight="@dimen/_30sdp"
-        app:passwordToggleEnabled="true">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
-        <EditText
-            android:id="@+id/loginpassword"
+                <EditText
+                    android:id="@+id/loginemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter your e-mail"
+                    android:inputType="textEmailAddress"></EditText>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/password_text_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your password">
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/background_rounded_text_fields"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:outlineProvider="background"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            app:layout_constraintTop_toBottomOf="@id/email_text_field">
 
-        </EditText>
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:src="@drawable/ic_key"
+                app:tint="@color/black"></ImageView>
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                app:passwordToggleEnabled="true">
 
-    <RelativeLayout
-        android:id="@+id/login"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_below="@id/password"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="@dimen/_30sdp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="9dp"
-        android:layout_marginRight="@dimen/_30sdp"
-        android:background="@drawable/button_design"
-        android:gravity="">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:text="LOGIN"
-            android:textColor="@color/White"
-            android:textSize="@dimen/_16sdp"
-            android:textStyle="bold">
-
-        </TextView>
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/gotoforgotpassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/login"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginTop="-53dp"
-        android:layout_marginRight="@dimen/_20sdp"
-        android:text="Forgot Password"
-
-        android:textColor="@color/black"
-
-        >
-
-    </TextView>
-
-    <RelativeLayout
-        android:id="@+id/gotosignup"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_50sdp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="@dimen/_30sdp"
-        android:layout_marginBottom="@dimen/_30sdp"
-        android:layout_marginRight="@dimen/_30sdp"
-        android:background="@drawable/button_design">
+                <EditText
+                    android:id="@+id/loginpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter your password"></EditText>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
         <TextView
+            android:id="@+id/gotoforgotpassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:text="New User! Want to Sign up?"
+            android:text="Forgot Password"
             android:textColor="@color/Accent"
-            android:textSize="@dimen/_16sdp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password_text_field"></TextView>
 
-        </TextView>
+        <RelativeLayout
+            android:id="@+id/login"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:background="@drawable/button_design"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gotoforgotpassword">
 
-    </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/_23sdp"
+                android:text="LOGIN"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold"></TextView>
 
+            <ImageView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_login_arrow"
+                app:tint="@color/White"></ImageView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/gotosignup"
+            android:layout_width="@dimen/_210sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/_30sdp"
+            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:background="@drawable/button_design"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:text="New User! Want to Sign up?"
+                android:textColor="@color/White"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold"></TextView>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
