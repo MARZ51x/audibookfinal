@@ -19,14 +19,6 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        settings = findViewById(R.id.activity_settings);
-        sched = findViewById(R.id.activity_schedule);
-        main = findViewById(R.id.main);
-        nav = findViewById(R.id.navbar);
-        nav2 = findViewById(R.id.navbar2);
-
 /////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
         int value2 = AppCompatDelegate.MODE_NIGHT_NO;
 
@@ -45,6 +37,14 @@ public class HomeActivity extends AppCompatActivity {
             setTheme(R.style.Theme_Light);
         }
 /////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+        settings = findViewById(R.id.activity_settings);
+        sched = findViewById(R.id.activity_schedule);
+        main = findViewById(R.id.main);
+        nav = findViewById(R.id.navbar);
+        nav2 = findViewById(R.id.navbar2);
 
 /////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
         boolean valueNav= true;

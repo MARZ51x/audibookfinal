@@ -26,6 +26,14 @@ public class ScheduleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+/////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.Theme_Dark);
+        }else {
+            setTheme(R.style.Theme_Light);
+        }
+/////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);
         main = findViewById(R.id.main);
@@ -40,14 +48,6 @@ public class ScheduleActivity extends AppCompatActivity {
             overridePendingTransition(0, 0);
 
         });
-
-/////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
-        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
-            setTheme(R.style.Theme_Dark);
-        }else {
-            setTheme(R.style.Theme_Light);
-        }
-/////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
         boolean valueNav= true;

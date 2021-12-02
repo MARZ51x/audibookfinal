@@ -23,14 +23,21 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.Theme_Dark);
+        }else {
+            setTheme(R.style.Theme_Light);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         main = findViewById(R.id.main);
         nav = findViewById(R.id.navbar);
         nav2 = findViewById(R.id.navbar2);
         aSwitch = findViewById(R.id.switch1);
-
         switchCompat = (SwitchCompat) findViewById(R.id.bt_switch);
+
 /////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
         boolean value = true; // default value if no value was found
         int value2 = AppCompatDelegate.MODE_NIGHT_NO;
@@ -40,12 +47,6 @@ public class SettingsActivity extends AppCompatActivity {
         value2 = sharedPreferences2.getInt("defaultNightMode", value2);
         switchCompat.setChecked(value);
         AppCompatDelegate.setDefaultNightMode(value2);
-
-        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
-            setTheme(R.style.Theme_Dark);
-        }else {
-            setTheme(R.style.Theme_Light);
-        }
 
         switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -62,6 +63,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 /////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
+
 
 /////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
         boolean valueNav = true;
