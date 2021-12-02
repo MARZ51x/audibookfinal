@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/page_backgroundColor"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
     <!--<RelativeLayout
         android:id="@+id/centerline"
@@ -20,6 +21,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/_30sdp"
         android:layout_marginRight="@dimen/_30sdp"
+        android:background="?attr/page_backgroundColor"
         android:orientation="vertical">
 
         <ImageView
@@ -27,11 +29,13 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
             android:src="@drawable/login_logo"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_5sdp">
+            app:tint="?attr/text_color">
+
         </ImageView>
 
         <ImageView
@@ -46,7 +50,9 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/logo_main"
-            app:tint="@color/black"></ImageView>
+            app:tint="?attr/text_color">
+
+        </ImageView>
 
         <TextView
             android:id="@+id/login_plain_text"
@@ -54,11 +60,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_25sdp"
             android:text="Login to Continue"
-            android:textColor="@color/black"
+            android:textColor="?attr/text_color"
             android:textSize="@dimen/_15ssp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logo_title"></TextView>
+            app:layout_constraintTop_toBottomOf="@id/logo_title">
+
+        </TextView>
 
         <LinearLayout
             android:id="@+id/email_text_field"
@@ -70,27 +78,40 @@
             android:orientation="horizontal"
             android:outlineProvider="background"
             android:windowSoftInputMode="adjustPan|stateHidden"
-            app:layout_constraintTop_toBottomOf="@id/login_plain_text">
+            app:layout_constraintTop_toBottomOf="@id/login_plain_text"
+
+            >
 
             <ImageView
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginLeft="@dimen/_5sdp"
                 android:src="@drawable/ic_mail"
-                app:tint="@color/black"></ImageView>
+                app:tint="?attr/text_color">
+
+            </ImageView>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:gravity="center"
+                app:hintTextColor="?attr/text_color"
+                android:textColorHint="?attr/text_color"
+                >
 
                 <EditText
                     android:id="@+id/loginemail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter your e-mail"
-                    android:inputType="textEmailAddress"></EditText>
+                    android:inputType="textEmailAddress"
+                    android:textColor="?attr/text_color"
+                    android:textColorHint="?attr/text_color"
+
+                    >
+
+                </EditText>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -111,20 +132,32 @@
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginLeft="@dimen/_5sdp"
                 android:src="@drawable/ic_key"
-                app:tint="@color/black"></ImageView>
+                app:tint="?attr/text_color"
+                >
+
+            </ImageView>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                app:hintTextColor="?attr/text_color"
+                android:textColorHint="?attr/text_color"
+
+                >
 
                 <EditText
                     android:id="@+id/loginpassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter your password"></EditText>
+                    android:hint="Enter your password"
+                    android:textColorHint="?attr/text_color"
+                    android:textColor="?attr/text_color"
+                    >
+
+                </EditText>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -136,17 +169,18 @@
             android:textColor="@color/Accent"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/password_text_field"></TextView>
+            app:layout_constraintTop_toBottomOf="@id/password_text_field">
+
+        </TextView>
 
         <RelativeLayout
             android:id="@+id/login"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_30sdp"
-            android:layout_marginLeft="@dimen/_30sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginEnd="9dp"
-            android:layout_marginRight="@dimen/_30sdp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/button_design"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/gotoforgotpassword">
 
@@ -158,7 +192,9 @@
                 android:text="LOGIN"
                 android:textColor="@color/White"
                 android:textSize="@dimen/_16sdp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold">
+
+            </TextView>
 
             <ImageView
                 android:layout_width="@dimen/_35sdp"
@@ -166,7 +202,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_login_arrow"
-                app:tint="@color/White"></ImageView>
+                app:tint="@color/White">
+
+            </ImageView>
         </RelativeLayout>
 
         <RelativeLayout
@@ -190,7 +228,9 @@
                 android:text="New User! Want to Sign up?"
                 android:textColor="@color/White"
                 android:textSize="@dimen/_15ssp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold">
+
+            </TextView>
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

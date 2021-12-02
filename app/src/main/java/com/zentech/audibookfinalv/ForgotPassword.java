@@ -1,8 +1,5 @@
 package com.zentech.audibookfinalv;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,7 +26,18 @@ public class ForgotPassword extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Check condition
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            //When night mode is equal to yes
+            //set dark theme
+            setTheme(R.style.Theme_Dark);
+        }else {
+            //When night mode is equal to no
+            //Set light theme
+            setTheme(R.style.Theme_Light);
+        }
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_forgot_password);
 
         //getSupportActionBar().hide();

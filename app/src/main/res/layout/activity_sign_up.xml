@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/White"
+    android:background="?attr/page_backgroundColor"
     tools:context=".SignUp">
 
     <!--<RelativeLayout
@@ -19,6 +19,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/_30sdp"
         android:layout_marginRight="@dimen/_30sdp"
+        android:background="?attr/page_backgroundColor"
         android:orientation="vertical">
 
         <ImageView
@@ -26,37 +27,44 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_gravity="center"
+            android:layout_marginTop="4dp"
             android:src="@drawable/login_logo"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="@dimen/_5sdp">
+            app:tint="?attr/text_color">
+
         </ImageView>
 
         <LinearLayout
             android:id="@+id/new_user_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/logo_main"
             android:layout_marginTop="@dimen/_5sdp"
+            android:background="?attr/page_backgroundColor"
             android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/logo_main">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="New User"
+                android:textColor="?attr/text_color"
                 android:textSize="@dimen/_40ssp"
-                android:textColor="@color/Accent"
                 android:textStyle="bold">
+
             </TextView>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nice to see you here"
-                android:textSize="@dimen/_15ssp"
-                android:textColor="@color/NavGrey" >
+                android:textColor="?attr/text_color"
+                android:textSize="@dimen/_15ssp">
+
             </TextView>
 
         </LinearLayout>
@@ -78,20 +86,26 @@
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginLeft="@dimen/_5sdp"
                 android:src="@drawable/ic_mail"
-                app:tint="@color/black"></ImageView>
+                app:tint="?attr/text_color">
+
+            </ImageView>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/email"
-                app:layout_constraintTop_toBottomOf="@id/new_user_text">
+                android:textColorHint="?attr/text_color"
+                app:hintTextColor="?attr/text_color"
+                app:layout_constraintTop_toBottomOf="@id/new_user_text"
+                >
 
                 <EditText
+                    android:id="@+id/signupemail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/signupemail"
                     android:hint="Enter your E-mail"
                     android:inputType="textEmailAddress">
+
                 </EditText>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -113,13 +127,16 @@
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginLeft="@dimen/_5sdp"
                 android:src="@drawable/ic_key"
-                app:tint="@color/black"></ImageView>
+                app:tint="?attr/text_color"></ImageView>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:passwordToggleEnabled="true">
+                android:textColorHint="?attr/text_color"
+                app:hintTextColor="?attr/text_color"
+                app:passwordToggleEnabled="true"
+                >
 
                 <EditText
                     android:id="@+id/signuppassword"
@@ -138,9 +155,9 @@
             android:layout_height="@dimen/_25sdp"
             android:layout_marginTop="@dimen/_30sdp"
             android:background="@drawable/button_design"
-            app:layout_constraintTop_toBottomOf="@id/password_text_field"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/password_text_field">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -160,15 +177,15 @@
             android:id="@+id/gotologin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Want to Log in?"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:layout_marginRight="@dimen/_20sdp"
-            android:textColor="@color/black"
             android:layout_below="@id/signup"
+            android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_70sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="@dimen/_20sdp">
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:text="Want to Log in?"
+            android:textAlignment="center"
+            android:textColor="?attr/text_color"
+            app:layout_constraintBottom_toBottomOf="parent">
 
         </TextView>
 

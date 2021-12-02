@@ -113,7 +113,11 @@
             android:layout_marginStart="16dp"
             android:text="Schedule"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logo"></TextView>
+            app:layout_constraintTop_toBottomOf="@id/logo"
+            android:textColor="?attr/text_color"
+            >
+
+        </TextView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/SchedRecyclerView"
@@ -191,7 +195,10 @@
             app:layout_constraintHorizontal_bias="0.471"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/SchedRecyclerView"
-            app:layout_constraintVertical_bias="0.235"/>
+            app:layout_constraintVertical_bias="0.235">
+
+        </Switch>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
