@@ -46,10 +46,12 @@ public class SettingsActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 //Check condition
                 if(isChecked){
+                    switchCompat.setChecked(true);
                     //when swtich button is checked
                     // set night mde
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 }else{
+                    switchCompat.setChecked(false);
                     //when switch button is checked
                     //set light mode
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -110,11 +112,15 @@ public class SettingsActivity extends AppCompatActivity {
     public void ScheduleActivity() {
         Intent intent = new Intent(this, ScheduleActivity.class);
         startActivity(intent);
+        overridePendingTransition(0,0);
+        finish();
     }
 
     public void HomeActivity() {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
+        overridePendingTransition(0,0);
+        finish();
     }
 }
 

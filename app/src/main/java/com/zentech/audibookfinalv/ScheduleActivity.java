@@ -87,10 +87,13 @@ public class ScheduleActivity extends AppCompatActivity {
     public void HomeActivity(){
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
+        finish();
     }
     public void SettingsActivity(){
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
+        overridePendingTransition(0,0);
+        finish();
     }
 }
 

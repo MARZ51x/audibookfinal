@@ -90,10 +90,14 @@ public class HomeActivity extends AppCompatActivity {
     public void ScheduleActivity(){
         Intent intent = new Intent(this, ScheduleActivity.class);
         startActivity(intent);
+        overridePendingTransition(0,0);
+        finish();
     }
     public void SettingsActivity(){
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
+        overridePendingTransition(0,0);
+        finish();
     }
 
 }
