@@ -1,6 +1,7 @@
 package com.zentech.audibookfinalv;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         //Check condition
         if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
             //When night mode is equal to yes
@@ -39,26 +41,52 @@ public class SettingsActivity extends AppCompatActivity {
         nav2 = findViewById(R.id.navbar2);
         aSwitch = findViewById(R.id.switch1);
 
-        //Assign Variable
-        switchCompat =findViewById(R.id.bt_switch);
+        // Switch
+        switchCompat = (SwitchCompat) findViewById(R.id.bt_switch);
+
+        boolean value = true; // default value if no value was found
+
+        final SharedPreferences sharedPreferences = getSharedPreferences("isChecked", 0);
+
+        value = sharedPreferences.getBoolean("isChecked", value); // retrieve the value of your key
+        switchCompat.setChecked(value);
+
         switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    sharedPreferences.edit().putBoolean("isChecked", true).apply();
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                }else {
+                    sharedPreferences.edit().putBoolean("isChecked", false).apply();
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                }
+            }
+        });
+
+
+
+
+        //Assign Variable
+        //switchCompat =findViewById(R.id.bt_switch);
+       /* switchCompat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 //Check condition
                 if(isChecked){
-                    switchCompat.setChecked(true);
+                    sharedPreferences.edit().putBoolean("isChecked", true).apply();
                     //when swtich button is checked
                     // set night mde
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 }else{
-                    switchCompat.setChecked(false);
+                    sharedPreferences.edit().putBoolean("isChecked", false).apply();
                     //when switch button is checked
                     //set light mode
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 }
             }
         });
-
+*/
 
 
         aSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {

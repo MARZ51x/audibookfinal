@@ -158,7 +158,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_120sdp"
-                android:layout_marginEnd="@dimen/_15sdp">
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:checked="true"
+                >
             </androidx.appcompat.widget.SwitchCompat>
 
         </LinearLayout>
@@ -195,7 +197,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_86sdp"
-                android:layout_marginEnd="@dimen/_15sdp">
+                android:layout_marginEnd="@dimen/_15sdp"
+                >
             </Switch>
         </LinearLayout>
 
