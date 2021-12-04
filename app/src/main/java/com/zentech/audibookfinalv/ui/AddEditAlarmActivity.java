@@ -3,6 +3,7 @@ package com.zentech.audibookfinalv.ui;
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -36,7 +37,7 @@ public final class AddEditAlarmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_alarm);
 
         //noinspection ConstantConditions
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Schedule");
 
         final Alarm alarm = getAlarm();
@@ -49,6 +50,21 @@ public final class AddEditAlarmActivity extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.edit_alarm_frag_container);
+        if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
+            super.onBackPressed();
+        }
+    }
+
 
     private Alarm getAlarm() {
         switch (getMode()) {

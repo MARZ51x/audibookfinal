@@ -3,6 +3,7 @@ package com.zentech.audibookfinalv.ui;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -27,7 +28,7 @@ import com.zentech.audibookfinalv.util.ViewUtils;
 
 import java.util.Calendar;
 
-public final class AddEditAlarmFragment extends Fragment {
+public final class AddEditAlarmFragment extends Fragment implements IOnBackPressed {
 
     private TimePicker mTimePicker;
     private ImageButton action_delete;
@@ -47,7 +48,6 @@ public final class AddEditAlarmFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         final View v = inflater.inflate(R.layout.fragment_add_edit_alarm, container, false);
 
         setHasOptionsMenu(true);
@@ -92,6 +92,9 @@ public final class AddEditAlarmFragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.action_save:
                 save();
+                break;
+            case R.id.action_home:
+                onBackPressed();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -174,4 +177,43 @@ public final class AddEditAlarmFragment extends Fragment {
 
     }
 
+
+    protected void exitByBackKey() {
+
+        AlertDialog alertbox = new AlertDialog.Builder(getContext())
+                .setMessage("Are you sure you want to go back? Changes wont be saved")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                    // do something when the button is clicked
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        final Alarm alarm = getAlarm();
+                        AlarmReceiver.cancelReminderAlarm(getContext(), alarm);
+
+                        final int rowsDeleted = DatabaseHelper.getInstance(getContext()).deleteAlarm(alarm);
+                        int messageId;
+                        if(rowsDeleted == 1) {
+                            messageId = R.string.delete_complete;
+                            //Toast.makeText(getContext(), messageId, Toast.LENGTH_SHORT).show();
+                            LoadAlarmsService.launchLoadAlarmsService(getContext());
+                            getActivity().finish();
+                        } else {
+                            messageId = R.string.delete_failed;
+                            //Toast.makeText(getContext(), messageId, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+                    // do something when the button is clicked
+                    public void onClick(DialogInterface arg0, int arg1) {
+                    }
+                })
+                .show();
+    }
+
+    @Override
+    public boolean onBackPressed() {
+            exitByBackKey();
+            return true;
+    }
 }
