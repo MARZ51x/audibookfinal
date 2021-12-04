@@ -2,6 +2,8 @@ package com.zentech.audibookfinalv.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -10,8 +12,10 @@ import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +25,7 @@ import com.zentech.audibookfinalv.ui.AddEditAlarmActivity;
 import com.zentech.audibookfinalv.util.AlarmUtils;
 
 import java.util.List;
+import java.util.Random;
 
 public final class AlarmsAdapter extends RecyclerView.Adapter<AlarmsAdapter.ViewHolder> {
 
@@ -55,6 +60,12 @@ public final class AlarmsAdapter extends RecyclerView.Adapter<AlarmsAdapter.View
         holder.amPm.setText(AlarmUtils.getAmPm(alarm.getTime()));
         holder.label.setText(alarm.getLabel());
         holder.days.setText(buildSelectedDays(alarm));
+
+        int[] androidColors = c.getResources().getIntArray(R.array.androidcolors);
+        int randomAndroidColor = androidColors[position % androidColors.length];
+///////////////////////////////////PARA RANDOM/////////////////////////////////////////////////
+        //int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
+        holder.alarmView.setBackgroundTintList(ColorStateList.valueOf(randomAndroidColor));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,9 +112,7 @@ public final class AlarmsAdapter extends RecyclerView.Adapter<AlarmsAdapter.View
                 builder.setSpan(span, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
         }
-
         return builder;
-
     }
 
     public void setAlarms(List<Alarm> alarms) {
@@ -112,12 +121,12 @@ public final class AlarmsAdapter extends RecyclerView.Adapter<AlarmsAdapter.View
     }
 
     static final class ViewHolder extends RecyclerView.ViewHolder {
-
+        RelativeLayout alarmView;
         final TextView time, amPm, label, days;
 
         ViewHolder(View itemView) {
             super(itemView);
-
+            alarmView = itemView.findViewById(R.id.alarm_row);
             time = itemView.findViewById(R.id.ar_time);
             amPm = itemView.findViewById(R.id.ar_am_pm);
             label = itemView.findViewById(R.id.ar_label);

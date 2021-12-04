@@ -27,7 +27,6 @@
     <color name="NavGrey">#444444</color>
     <color name="blue_settings_bttn">#FF005F73</color>
 
-
     <color name="primary">#00BCD4</color>
     <color name="primary_dark">#0097A7</color>
     <color name="primary_light">#B2EBF2</color>
@@ -36,5 +35,23 @@
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+
+    <item name="sched1" type="color">#7ABDA7</item>
+    <item name="sched2" type="color">#FF0A9396</item>
+    <item name="sched3" type="color">#FF005F73</item>
+    <item name="sched4" type="color">#FFCA6702</item>
+    <item name="sched5" type="color">#FFBB3E03</item>
+    <item name="sched6" type="color">#FFAE2012</item>
+    <item name="sched7" type="color">#FF9B2226</item>
+
+    <integer-array name="androidcolors">
+        <item>@color/sched7</item>
+        <item>@color/sched3</item>
+        <item>@color/sched4</item>
+        <item>@color/sched5</item>
+        <item>@color/sched1</item>
+        <item>@color/sched6</item>
+        <item>@color/sched2</item>
+    </integer-array>
 
 </resources>
