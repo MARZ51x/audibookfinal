@@ -10,6 +10,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
+    <TextView
+        android:id="@+id/alarmTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:gravity="center"
+        android:textSize="24dp"
+        android:textColor="@color/accent"/>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -30,9 +39,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/black"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/accent"
             android:layout_weight="1"
             android:text="@string/launch_main_activity"
+            android:textColor="@color/black"
             tools:text="Load Main Activity"
             style="@style/Base.Widget.AppCompat.Button.Borderless.Colored" />
 
@@ -40,10 +50,11 @@
             android:id="@+id/dismiss_btn"
             android:layout_width="0dp"
             android:background="@color/black"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/accent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/dismiss"
+            android:textColor="@color/black"
             tools:text="Dismiss"
             style="@style/Base.Widget.AppCompat.Button.Borderless.Colored" />
 

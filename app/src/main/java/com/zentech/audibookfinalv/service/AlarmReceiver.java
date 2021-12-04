@@ -17,12 +17,14 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
@@ -43,12 +45,17 @@ public final class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        String value = "Title"; // default value if no value was found
+        final SharedPreferences sharedPreferencestitle = context.getSharedPreferences("isTitle", 0);
+        value = sharedPreferencestitle.getString("isTitle", value); // retrieve the value of your key
 
         final Alarm alarm = intent.getBundleExtra(BUNDLE_EXTRA).getParcelable(ALARM_KEY);
         if(alarm == null) {
             Log.e(TAG, "Alarm is null", new NullPointerException());
             return;
         }
+
+        sharedPreferencestitle.edit().putString("isTitle", alarm.getLabel()).apply();
 
         final int id = alarm.notificationId();
 
@@ -68,7 +75,6 @@ public final class AlarmReceiver extends BroadcastReceiver {
         builder.setContentIntent(launchAlarmLandingPage(context, alarm));
         builder.setAutoCancel(true);
         builder.setPriority(Notification.PRIORITY_HIGH);
-
         manager.notify(id, builder.build());
 
         //Reset Alarm manually

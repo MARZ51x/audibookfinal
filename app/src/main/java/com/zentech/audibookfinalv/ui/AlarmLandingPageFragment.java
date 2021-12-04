@@ -7,6 +7,7 @@ import static android.content.Context.VIBRATOR_SERVICE;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -55,6 +56,13 @@ public final class AlarmLandingPageFragment extends Fragment implements SensorEv
         accelerormeterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         final Button launchMainActivityBtn = (Button) v.findViewById(R.id.load_main_activity_btn);
         final Button dismiss = (Button) v.findViewById(R.id.dismiss_btn);
+        final TextView alarmTitle = (TextView) v.findViewById(R.id.alarmTitle);
+
+        String value= "Title";
+        SharedPreferences sharedPreferencesTitle = getContext().getSharedPreferences("isTitle", 0);
+        value = sharedPreferencesTitle.getString("isTitle", value);
+
+        alarmTitle.setText(value);
         launchMainActivityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
