@@ -132,7 +132,7 @@
             tools:context="com.zentech.audibook.SchedMain" />
 
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <Button
             android:id="@+id/fab2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
             android:layout_marginBottom="32dp"
             android:backgroundTint="#FDBE3B"
             android:padding="@dimen/_5sdp"
-            app:backgroundTint="@color/black"
+            app:backgroundTint="@color/accent"
             app:borderWidth="3.5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

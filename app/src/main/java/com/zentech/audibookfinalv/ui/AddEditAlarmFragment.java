@@ -91,7 +91,12 @@ public final class AddEditAlarmFragment extends Fragment implements IOnBackPress
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_save:
-                save();
+                if(!mMon.isChecked() && !mTues.isChecked() && !mWed.isChecked() && !mThurs.isChecked() && !mFri.isChecked()
+                        && !mSat.isChecked() && !mSun.isChecked()){
+                    alarmChecker();
+                }else {
+                    save();
+                }
                 break;
             case R.id.action_home:
                 onBackPressed();
@@ -132,6 +137,7 @@ public final class AddEditAlarmFragment extends Fragment implements IOnBackPress
         alarm.setDay(Alarm.FRI, mFri.isChecked());
         alarm.setDay(Alarm.SAT, mSat.isChecked());
         alarm.setDay(Alarm.SUN, mSun.isChecked());
+
 
         final int rowsUpdated = DatabaseHelper.getInstance(getContext()).updateAlarm(alarm);
         final int messageId = (rowsUpdated == 1) ? R.string.update_complete : R.string.update_failed;
@@ -211,6 +217,18 @@ public final class AddEditAlarmFragment extends Fragment implements IOnBackPress
                 .show();
     }
 
+    protected void alarmChecker() {
+
+        AlertDialog alertbox = new AlertDialog.Builder(getContext())
+                .setMessage("Please select day for alarm")
+                .setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+
+                    // do something when the button is clicked
+                    public void onClick(DialogInterface arg0, int arg1) {
+                    }
+                })
+                .show();
+    }
     @Override
     public boolean onBackPressed() {
             exitByBackKey();

@@ -40,7 +40,7 @@ public class ScheduleActivity extends AppCompatActivity {
         nav = findViewById(R.id.navbar);
         nav2 = findViewById(R.id.navbar2);
 
-        final FloatingActionButton fab = findViewById(R.id.fab2);
+        final Button fab = findViewById(R.id.fab2);
         fab.setOnClickListener((View view) -> {
             AlarmUtils.checkAlarmPermissions(this);
             Intent intent =new Intent(buildAddEditAlarmActivityIntent(this, ADD_ALARM));
