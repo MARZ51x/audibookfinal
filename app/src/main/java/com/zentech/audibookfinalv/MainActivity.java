@@ -53,11 +53,11 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        if(firebaseUser!=null)
+    /*    if(firebaseUser!=null)
         {
             finish();
-            startActivity(new Intent(MainActivity.this,HomeActivity.class));
-        }
+            startActivity(new Intent(MainActivity.this,SplashScreen.class));
+        }*/
 
         mgotosignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,8 +119,9 @@ public class MainActivity extends AppCompatActivity {
         if(firebaseUser.isEmailVerified())
         {
             Toast.makeText(getApplicationContext(),"Logged In",Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(MainActivity.this,SplashScreen.class));
             finish();
-            startActivity(new Intent(MainActivity.this,HomeActivity.class));
+
         }
         else
         {
