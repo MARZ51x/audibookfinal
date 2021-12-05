@@ -38,6 +38,7 @@
             android:orientation="horizontal"
             android:paddingBottom="@dimen/_25sdp"
             android:text="H\no\nm\ne"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
 
@@ -177,16 +178,7 @@
 
         </Button>
 
-        <Switch
-            android:id="@+id/switch1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/add_note_btn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.471"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/NotesRecyclerView"
-            app:layout_constraintVertical_bias="0.235" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -218,6 +210,7 @@
             android:orientation="horizontal"
             android:paddingBottom="@dimen/_25sdp"
             android:text="H\no\nm\ne"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
