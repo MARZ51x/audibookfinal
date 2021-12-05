@@ -107,30 +107,6 @@ public final class AddEditAlarmFragment extends Fragment implements IOnBackPress
 
         return v;
     }
-/*
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.edit_alarm_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }*/
-
-  /*  @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_save:
-                if(!mMon.isChecked() && !mTues.isChecked() && !mWed.isChecked() && !mThurs.isChecked() && !mFri.isChecked()
-                        && !mSat.isChecked() && !mSun.isChecked()){
-                    alarmChecker();
-                }else {
-                    save();
-                }
-                break;
-            case R.id.action_home:
-                onBackPressed();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
 
     private Alarm getAlarm() {
         return getArguments().getParcelable(AddEditAlarmActivity.ALARM_EXTRA);
@@ -212,36 +188,41 @@ public final class AddEditAlarmFragment extends Fragment implements IOnBackPress
 
 
     protected void exitByBackKey() {
+        if(!mMon.isChecked() && !mTues.isChecked() && !mWed.isChecked() && !mThurs.isChecked() && !mFri.isChecked()
+                && !mSat.isChecked() && !mSun.isChecked()){
+            AlertDialog alertbox = new AlertDialog.Builder(getContext())
+                    .setMessage("Are you sure you want to go back? Changes wont be saved")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
-        AlertDialog alertbox = new AlertDialog.Builder(getContext())
-                .setMessage("Are you sure you want to go back? Changes wont be saved")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        // do something when the button is clicked
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            final Alarm alarm = getAlarm();
+                            AlarmReceiver.cancelReminderAlarm(getContext(), alarm);
 
-                    // do something when the button is clicked
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        final Alarm alarm = getAlarm();
-                        AlarmReceiver.cancelReminderAlarm(getContext(), alarm);
-
-                        final int rowsDeleted = DatabaseHelper.getInstance(getContext()).deleteAlarm(alarm);
-                        int messageId;
-                        if(rowsDeleted == 1) {
-                            messageId = R.string.delete_complete;
-                            //Toast.makeText(getContext(), messageId, Toast.LENGTH_SHORT).show();
-                            LoadAlarmsService.launchLoadAlarmsService(getContext());
-                            getActivity().finish();
-                        } else {
-                            messageId = R.string.delete_failed;
-                            //Toast.makeText(getContext(), messageId, Toast.LENGTH_SHORT).show();
+                            final int rowsDeleted = DatabaseHelper.getInstance(getContext()).deleteAlarm(alarm);
+                            int messageId;
+                            if(rowsDeleted == 1) {
+                                messageId = R.string.delete_complete;
+                                //Toast.makeText(getContext(), messageId, Toast.LENGTH_SHORT).show();
+                                LoadAlarmsService.launchLoadAlarmsService(getContext());
+                                getActivity().finish();
+                            } else {
+                                messageId = R.string.delete_failed;
+                                //Toast.makeText(getContext(), messageId, Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
 
-                    // do something when the button is clicked
-                    public void onClick(DialogInterface arg0, int arg1) {
-                    }
-                })
-                .show();
+                        // do something when the button is clicked
+                        public void onClick(DialogInterface arg0, int arg1) {
+                        }
+                    })
+                    .show();
+        }else {
+            save();
+        }
+
     }
 
     protected void alarmChecker() {
