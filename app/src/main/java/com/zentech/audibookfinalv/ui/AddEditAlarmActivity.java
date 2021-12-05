@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,6 +44,7 @@ public final class AddEditAlarmActivity extends AppCompatActivity {
 
         if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
             setTheme(R.style.AppTheme);
+            root.setBackgroundColor(Color.parseColor("#FF001219"));
         }else {
             setTheme(R.style.Theme_Light);
             root.setBackgroundColor(getResources().getColor(android.R.color.white));
