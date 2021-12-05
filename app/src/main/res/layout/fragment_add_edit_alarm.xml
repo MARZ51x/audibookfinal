@@ -16,6 +16,47 @@
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            >
+
+            <ImageButton
+                android:id="@+id/backbttn"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24">
+
+            </ImageButton>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@id/backbttn"
+                android:gravity="center"
+                android:text="Schedule"
+                android:textSize="@dimen/_20ssp">
+
+            </TextView>
+
+            <ImageButton
+                android:id="@+id/savebttn"
+                android:layout_width="36sp"
+                android:layout_height="36dp"
+                android:background="@null"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_done"
+                >
+
+            </ImageButton>
+
+        </RelativeLayout>
 
         <TextView
             android:layout_width="match_parent"

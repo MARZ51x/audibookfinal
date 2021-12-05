@@ -17,6 +17,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import com.zentech.audibookfinalv.R;
@@ -31,7 +32,7 @@ import java.util.Calendar;
 public final class AddEditAlarmFragment extends Fragment implements IOnBackPressed {
 
     private TimePicker mTimePicker;
-    private ImageButton action_delete;
+    private ImageButton action_delete, action_back, action_save;
     private EditText mLabel;
     private CheckBox mMon, mTues, mWed, mThurs, mFri, mSat, mSun;
 
@@ -48,8 +49,13 @@ public final class AddEditAlarmFragment extends Fragment implements IOnBackPress
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_add_edit_alarm, container, false);
 
+        final View v = inflater.inflate(R.layout.fragment_add_edit_alarm, container, false);
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            getContext().setTheme(R.style.AppTheme);
+        }else {
+            getContext().setTheme(R.style.Theme_Light);
+        }
         setHasOptionsMenu(true);
 
         final Alarm alarm = getAlarm();
@@ -59,6 +65,27 @@ public final class AddEditAlarmFragment extends Fragment implements IOnBackPress
             @Override
             public void onClick(View v) {
                 delete();
+            }
+        });
+        action_back = (ImageButton) v.findViewById(R.id.backbttn);
+        action_save = (ImageButton) v.findViewById(R.id.savebttn);
+
+
+        action_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        action_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!mMon.isChecked() && !mTues.isChecked() && !mWed.isChecked() && !mThurs.isChecked() && !mFri.isChecked()
+                        && !mSat.isChecked() && !mSun.isChecked()){
+                    alarmChecker();
+                }else {
+                    save();
+                }
             }
         });
 
@@ -80,14 +107,14 @@ public final class AddEditAlarmFragment extends Fragment implements IOnBackPress
 
         return v;
     }
-
+/*
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.edit_alarm_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
-    }
+    }*/
 
-    @Override
+  /*  @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_save:
@@ -103,7 +130,7 @@ public final class AddEditAlarmFragment extends Fragment implements IOnBackPress
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
     private Alarm getAlarm() {
         return getArguments().getParcelable(AddEditAlarmActivity.ALARM_EXTRA);
