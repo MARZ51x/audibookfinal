@@ -3,12 +3,14 @@ package com.zentech.audibookfinalv.ui;
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toolbar;
 
 import com.zentech.audibookfinalv.R;
@@ -36,9 +38,15 @@ public final class AddEditAlarmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_alarm);
 
-        //noinspection ConstantConditions
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Schedule");
+        View someView = findViewById(R.id.edit_alarm_frag_container);
+        View root = someView.getRootView();
+
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.AppTheme);
+        }else {
+            setTheme(R.style.Theme_Light);
+            root.setBackgroundColor(getResources().getColor(android.R.color.white));
+        }
 
         final Alarm alarm = getAlarm();
 
@@ -48,7 +56,6 @@ public final class AddEditAlarmActivity extends AppCompatActivity {
                     .add(R.id.edit_alarm_frag_container, AddEditAlarmFragment.newInstance(alarm))
                     .commit();
         }
-
     }
 
     @Override
