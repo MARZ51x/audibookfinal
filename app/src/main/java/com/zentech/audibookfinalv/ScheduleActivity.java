@@ -1,25 +1,23 @@
 package com.zentech.audibookfinalv;
 
+import static com.zentech.audibookfinalv.ui.AddEditAlarmActivity.ADD_ALARM;
+import static com.zentech.audibookfinalv.ui.AddEditAlarmActivity.buildAddEditAlarmActivityIntent;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Switch;
-
-import static com.zentech.audibookfinalv.ui.AddEditAlarmActivity.ADD_ALARM;
-import static com.zentech.audibookfinalv.ui.AddEditAlarmActivity.buildAddEditAlarmActivityIntent;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.zentech.audibookfinalv.util.AlarmUtils;
 
 public class ScheduleActivity extends AppCompatActivity {
-    private Button button_home, button_settings, button_home2, button_settings2;
+    private Button button_home, button_settings, button_home2, button_settings2, fab;
 
     private Button button;
     ConstraintLayout nav,nav2, main;
@@ -40,7 +38,7 @@ public class ScheduleActivity extends AppCompatActivity {
         nav = findViewById(R.id.navbar);
         nav2 = findViewById(R.id.navbar2);
 
-        final Button fab = findViewById(R.id.fab2);
+        fab =(Button) findViewById(R.id.fab2);
         fab.setOnClickListener((View view) -> {
             AlarmUtils.checkAlarmPermissions(this);
             Intent intent =new Intent(buildAddEditAlarmActivityIntent(this, ADD_ALARM));
