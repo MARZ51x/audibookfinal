@@ -4,7 +4,6 @@
         <attr name="page_backgroundColor" format="color"/>
         <attr name="text_color" format="color"/>
         <attr name="nav_backgroundColor" format="color"/>
-
     </declare-styleable>
     
 </resources>
