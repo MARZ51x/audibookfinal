@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView mgotoforgotpassword;
 
     private FirebaseAuth firebaseAuth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Check condition

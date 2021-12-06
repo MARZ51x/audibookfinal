@@ -8,9 +8,11 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/White"
+    >
 
-    <TextView
+  <!--  <TextView
         android:id="@+id/alarmTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,45 +20,123 @@
         android:gravity="center"
         android:textSize="24dp"
         android:textColor="@color/accent"/>
-
-    <ImageView
+-->
+    <!--<ImageView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:alpha="0.3"
         app:srcCompat="@drawable/ic_alarm_white"
-        android:scaleType="fitCenter"/>
+        android:scaleType="fitCenter"/>-->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:orientation="horizontal"
-        android:gravity="fill">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:scaleType="fitCenter"
+        android:background="@color/White"
+        >
 
-        <Button
-            android:id="@+id/load_main_activity_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:backgroundTint="@color/accent"
-            android:layout_weight="1"
-            android:text="@string/launch_main_activity"
-            android:textColor="@color/black"
-            tools:text="Load Main Activity"
-            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored" />
 
-        <Button
-            android:id="@+id/dismiss_btn"
-            android:layout_width="0dp"
-            android:background="@color/black"
-            android:backgroundTint="@color/accent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/dismiss"
-            android:textColor="@color/black"
-            tools:text="Dismiss"
-            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored" />
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_width="91dp"
+                android:layout_height="82dp"
+                android:src="@drawable/login_logo"
+                android:layout_gravity="center"
+                />
+
+            <ImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:padding="0dp"
+                android:src="@drawable/actionbar_no_background"
+                app:tint="@color/black"
+
+                />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/White"
+            >
+            <pl.droidsonroids.gif.GifTextView
+                android:layout_width="@dimen/_180sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:background="@drawable/alarmlanding_bell"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/alarmTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Title"
+            android:textColor="@color/accent"
+            android:textSize="24dp"
+            android:layout_marginTop="@dimen/_30sdp"
+            />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="fill"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:background="@color/White"
+            >
+
+            <Button
+                android:id="@+id/load_main_activity_btn"
+                style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:background="@drawable/background_searchbar_rounded"
+                android:backgroundTint="@color/accent"
+                android:text="@string/launch_main_activity"
+                android:textColor="@color/White"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/dismiss_btn"
+                app:layout_constraintHorizontal_bias="0.325"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="Load Main Activity" />
+
+            <Button
+                android:id="@+id/dismiss_btn"
+                style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/background_searchbar_rounded"
+                android:backgroundTint="@color/accent"
+                android:text="@string/dismiss"
+                android:textColor="@color/White"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="Dismiss" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
