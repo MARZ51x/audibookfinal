@@ -105,8 +105,6 @@ public class HomeActivity extends AppCompatActivity {
         }
 /////////////////////////////CREATE NOTE///////////////////////////////////////////////////////////////////////////
 
-        //getSupportActionBar().setTitle("All Notes");
-
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -282,28 +280,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-//MENU FOR NOTES//
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.menu,menu);
-        return true;
-    }
-
-//LOGOUT//
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId())
-        {
-            case R.id.logout:
-                firebaseAuth.signOut();
-                finish();
-                startActivity(new Intent(HomeActivity.this,MainActivity.class));
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 //NOTE ADAPTER
 
     @Override

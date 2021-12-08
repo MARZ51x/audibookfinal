@@ -204,43 +204,51 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            app:layout_constraintTop_toBottomOf="@id/switching_mode_container"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/switching_mode_container">
 
             <ImageView
                 android:id="@+id/about_us"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:src="@drawable/ic_about"
-                app:tint="?attr/text_color">
-            </ImageView>
+                app:tint="?attr/text_color"></ImageView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="About Us"
                 android:layout_gravity="center"
-                android:textColor="?attr/text_color"
-                android:layout_marginStart="@dimen/_5sdp">
-            </TextView>
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="About Us"
+                android:textColor="?attr/text_color"></TextView>
 
         </LinearLayout>
 
-       <!-- <Switch
-            android:id="@+id/switch1"
+        <Button
+            android:id="@+id/logoutbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/add_sched_btn"
+            android:layout_marginTop="61dp"
+            android:text="Button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.471"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SchedRecyclerView"
-            app:layout_constraintVertical_bias="0.235"/>-->
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <!-- <Switch
+             android:id="@+id/switch1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             app:layout_constraintBottom_toTopOf="@+id/add_sched_btn"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.471"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/SchedRecyclerView"
+             app:layout_constraintVertical_bias="0.235"/>-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

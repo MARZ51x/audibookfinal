@@ -14,12 +14,16 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class SettingsActivity extends AppCompatActivity {
     //Initialize variable
     SwitchCompat switchCompat;
-    private Button button_sched, button_home, button_sched2, button_home2;
+    private Button button_sched, button_home, button_sched2, button_home2, logout_button;
     ConstraintLayout nav, nav2, main;
     Switch aSwitch;
+
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +41,19 @@ public class SettingsActivity extends AppCompatActivity {
         nav2 = findViewById(R.id.navbar2);
         aSwitch = findViewById(R.id.switch1);
         switchCompat = (SwitchCompat) findViewById(R.id.bt_switch);
+        logout_button = findViewById(R.id.logoutbutton);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        logout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                firebaseAuth.signOut();
+                finish();
+                startActivity(new Intent(SettingsActivity.this,MainActivity.class));
+            }
+        });
 
 /////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
         boolean value = true; // default value if no value was found
