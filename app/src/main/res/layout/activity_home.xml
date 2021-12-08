@@ -94,6 +94,7 @@
         android:layout_marginEnd="0dp"
         android:orientation="horizontal">
 
+
         <LinearLayout
             android:id="@+id/logo"
             android:layout_width="match_parent"
@@ -152,7 +153,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/NotesRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_435sdp"
+            android:scrollbars="vertical"
             android:layout_marginTop="@dimen/_5sdp"
             android:paddingStart="@dimen/_5sdp"
             android:paddingEnd="@dimen/_5sdp"
@@ -177,16 +179,6 @@
 
         </Button>
 
-        <Switch
-            android:id="@+id/switch1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/add_note_btn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.471"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/NotesRecyclerView"
-            app:layout_constraintVertical_bias="0.235" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

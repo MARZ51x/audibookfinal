@@ -17,6 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Light">
         <activity
+            android:name=".NoteDetails"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:exported="false" />
+        <activity
+            android:name=".EditNoteActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:exported="false" />
+        <activity
+            android:name=".CreateNote"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
@@ -27,8 +39,8 @@
             android:exported="false" />
         <activity
             android:name=".ui.AddEditAlarmActivity"
-            android:theme="@style/AppTheme"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="false" />
@@ -43,25 +55,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity"
+        <activity
+            android:name=".HomeActivity"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
-            >
-        </activity>
-        <activity android:name=".ScheduleActivity"
-            android:parentActivityName=".MainActivity"
-            >
-        </activity>
-        <activity android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".ScheduleActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity" />
 
         <service android:name=".service.LoadAlarmsService" />
 
         <receiver android:name=".service.LoadAlarmsReceiver" />
-
         <receiver android:name=".service.AlarmReceiver" />
-
         <receiver
             android:name=".service.BootReceiver"
             android:enabled="true"
@@ -70,10 +78,10 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>

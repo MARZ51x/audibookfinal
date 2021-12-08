@@ -53,11 +53,11 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        if(firebaseUser!=null)
+        /*if(firebaseUser!=null)
         {
             finish();
             startActivity(new Intent(MainActivity.this,HomeActivity.class));
-        }
+        }*/
 
         mgotosignup.setOnClickListener(new View.OnClickListener() {
             @Override
