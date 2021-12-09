@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,7 +27,7 @@ import java.util.Map;
 public class CreateNote extends AppCompatActivity {
 
     private EditText mcreatetitleofnote, mcreatecontentofnote;
-    private FloatingActionButton msavenote;
+    private ImageButton msavenote, backbttn;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -39,10 +41,14 @@ public class CreateNote extends AppCompatActivity {
         msavenote = findViewById(R.id.savenote);
         mcreatetitleofnote = findViewById(R.id.createtitleofnote);
         mcreatecontentofnote = findViewById(R.id.createcontentofnote);
+        backbttn = findViewById(R.id.backbttn);
+        backbttn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BackActivity();
+            }
+        });
 
-        Toolbar toolbar = findViewById(R.id.toolbarofcreatenote);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -88,11 +94,6 @@ public class CreateNote extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
     }
 
     @Override
@@ -104,5 +105,11 @@ public class CreateNote extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void BackActivity(){
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        overridePendingTransition(0,0);
+        finish();
     }
 }

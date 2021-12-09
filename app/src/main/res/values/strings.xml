@@ -53,4 +53,10 @@
     <!-- Notification -->
     <string name="channel_name">Simple Alarms</string>
     <string name="set_schedule">Set Schedule</string>
+
+    <string-array name="Sort">
+        <item>Oldest</item>
+        <item>Newest</item>
+    </string-array>
+
 </resources>

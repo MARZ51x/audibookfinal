@@ -2,6 +2,7 @@ package com.zentech.audibookfinalv;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -125,13 +126,17 @@ public class HomeActivity extends AppCompatActivity {
         FirestoreRecyclerOptions<firebasemodel> allusernotes = new FirestoreRecyclerOptions.Builder<firebasemodel>().setQuery(query, firebasemodel.class).build();
 
         noteAdapter = new FirestoreRecyclerAdapter<firebasemodel, NoteViewHolder>(allusernotes) {
+
+
             @Override
             protected void onBindViewHolder(@NonNull NoteViewHolder noteViewHolder, int i, @NonNull firebasemodel firebasemodel) {
 
                 ImageView popupbutton = noteViewHolder.itemView.findViewById(R.id.menupopupbtn);
 
-                int colorcode = getRandomColor();
-                noteViewHolder.mnote.setBackgroundColor(noteViewHolder.itemView.getResources().getColor(colorcode,null));
+                int[] androidColors = getResources().getIntArray(R.array.androidcolors);
+                int randomAndroidColor = androidColors[i % androidColors.length];
+
+                noteViewHolder.mnote.setBackgroundTintList(ColorStateList.valueOf(randomAndroidColor));
 
                 noteViewHolder.notetitle.setText(firebasemodel.getTitle());
                 noteViewHolder.notecontent.setText(firebasemodel.getContent());
@@ -256,7 +261,6 @@ public class HomeActivity extends AppCompatActivity {
         private TextView notetitle;
         private TextView notecontent;
         LinearLayout mnote;
-
 
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);

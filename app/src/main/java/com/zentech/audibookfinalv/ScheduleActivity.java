@@ -1,26 +1,39 @@
 package com.zentech.audibookfinalv;
 
-import static com.zentech.audibookfinalv.ui.AddEditAlarmActivity.ADD_ALARM;
-import static com.zentech.audibookfinalv.ui.AddEditAlarmActivity.buildAddEditAlarmActivityIntent;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import static com.zentech.audibookfinalv.ui.AddEditAlarmActivity.ADD_ALARM;
+import static com.zentech.audibookfinalv.ui.AddEditAlarmActivity.buildAddEditAlarmActivityIntent;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.zentech.audibookfinalv.adapter.AlarmsAdapter;
+import com.zentech.audibookfinalv.data.DatabaseHelper;
+import com.zentech.audibookfinalv.model.Alarm;
 import com.zentech.audibookfinalv.util.AlarmUtils;
 
-public class ScheduleActivity extends AppCompatActivity {
-    private Button button_home, button_settings, button_home2, button_settings2, fab;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
-    private Button button;
+public class ScheduleActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    private Button button_home, button_settings, button_home2, button_settings2;
     ConstraintLayout nav,nav2, main;
+    Spinner spinner;
+    private List<Alarm> mAlarms;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,14 +50,14 @@ public class ScheduleActivity extends AppCompatActivity {
         main = findViewById(R.id.main);
         nav = findViewById(R.id.navbar);
         nav2 = findViewById(R.id.navbar2);
+        spinner = findViewById(R.id.spinner);
 
-        fab =(Button) findViewById(R.id.fab2);
+        final Button fab = findViewById(R.id.fab2);
         fab.setOnClickListener((View view) -> {
             AlarmUtils.checkAlarmPermissions(this);
             Intent intent =new Intent(buildAddEditAlarmActivityIntent(this, ADD_ALARM));
             startActivity(intent);
             overridePendingTransition(0, 0);
-
         });
 
 /////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
@@ -68,6 +81,11 @@ public class ScheduleActivity extends AppCompatActivity {
             main.setLayoutParams(params);
         }
 /////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.Sort, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
         button_home = (Button) findViewById(R.id.homebttn);
         button_home.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +127,35 @@ public class ScheduleActivity extends AppCompatActivity {
         startActivity(intent);
         overridePendingTransition(0,0);
         finish();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+    public void sortAlarm() {
+        String value = "sort"; // default value if no value was found
+        final SharedPreferences sharedPreferencestitle = this.getSharedPreferences("isSort", 0);
+        value = sharedPreferencestitle.getString("isSort", value);
+
+        String valSort = spinner.getSelectedItem().toString();
+
+        switch (valSort) {
+            case "Oldest":
+                sharedPreferencestitle.edit().putString("isTitle", "Oldest").apply();
+                break;
+            case "Newest":
+                sharedPreferencestitle.edit().putString("isTitle", "Newest").apply();
+                break;
+            default:
+
+                break;
+        }
     }
 }
 
