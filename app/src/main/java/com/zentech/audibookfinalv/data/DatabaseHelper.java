@@ -40,7 +40,7 @@ public final class DatabaseHelper extends SQLiteOpenHelper {
         return sInstance;
     }
 
-    private DatabaseHelper(Context context) {
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, SCHEMA);
     }
 
@@ -107,7 +107,11 @@ public final class DatabaseHelper extends SQLiteOpenHelper {
         } finally {
             if (c != null && !c.isClosed()) c.close();
         }
-
+    }
+    public Cursor getData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+        return res;
     }
 
 }

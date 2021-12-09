@@ -2,8 +2,8 @@ package com.zentech.audibookfinalv.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -14,18 +14,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.zentech.audibookfinalv.R;
+import com.zentech.audibookfinalv.data.DatabaseHelper;
 import com.zentech.audibookfinalv.model.Alarm;
+import com.zentech.audibookfinalv.service.AlarmReceiver;
+import com.zentech.audibookfinalv.service.LoadAlarmsService;
 import com.zentech.audibookfinalv.ui.AddEditAlarmActivity;
 import com.zentech.audibookfinalv.util.AlarmUtils;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public final class AlarmsAdapter extends RecyclerView.Adapter<AlarmsAdapter.ViewHolder> {
 
@@ -38,6 +43,36 @@ public final class AlarmsAdapter extends RecyclerView.Adapter<AlarmsAdapter.View
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final Context c = parent.getContext();
         final View v = LayoutInflater.from(c).inflate(R.layout.alarm_row, parent, false);
+
+        String value = "sort"; // default value if no value was found
+        final SharedPreferences sharedPreferencestitle = c.getSharedPreferences("isSort", 0);
+        value = sharedPreferencestitle.getString("isSort", value);
+        if(value =="Oldest"){
+            Collections.sort(mAlarms, new Comparator<Alarm>() {
+                @Override
+                public int compare(Alarm o1, Alarm o2) {
+                    if(o1.notificationId() > o2.notificationId()) {
+                        return 1;
+                    } else {
+                        return -1;
+                    }
+                }
+            });
+
+        }else{
+            Collections.sort(mAlarms, new Comparator<Alarm>() {
+                @Override
+                public int compare(Alarm o1, Alarm o2) {
+                    if(o1.notificationId() > o2.notificationId()) {
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                }
+            });
+        }
+
+
         return new ViewHolder(v);
     }
 
@@ -61,11 +96,57 @@ public final class AlarmsAdapter extends RecyclerView.Adapter<AlarmsAdapter.View
         holder.label.setText(alarm.getLabel());
         holder.days.setText(buildSelectedDays(alarm));
 
+        if(mAlarms.isEmpty()){
+            
+        }
+
         int[] androidColors = c.getResources().getIntArray(R.array.androidcolors);
         int randomAndroidColor = androidColors[position % androidColors.length];
 ///////////////////////////////////PARA RANDOM/////////////////////////////////////////////////
         //int randomAndroidColor = androidColors[new Random().nextInt(androidColors.length)];
+
         holder.alarmView.setBackgroundTintList(ColorStateList.valueOf(randomAndroidColor));
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                new SweetAlertDialog(view.getContext(), SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Delete alarm?")
+                        .setContentText("")
+                        .setConfirmText("Delete")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog
+                                        .setTitleText("Successful")
+                                        .setContentText("Alarm deleted")
+                                        .setConfirmText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+                                AlarmReceiver.cancelReminderAlarm(view.getContext(), alarm);
+
+                                final int rowsDeleted = DatabaseHelper.getInstance(view.getContext()).deleteAlarm(alarm);
+                                int messageId;
+                                if(rowsDeleted == 1) {
+                                    messageId = R.string.delete_complete;
+                                    Toast.makeText(view.getContext(), messageId, Toast.LENGTH_SHORT).show();
+                                    LoadAlarmsService.launchLoadAlarmsService(view.getContext());
+
+                                } else {
+                                    messageId = R.string.delete_failed;
+                                    Toast.makeText(view.getContext(), messageId, Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        })
+                        .show();
+
+                int p=holder.getLayoutPosition();
+                System.out.println("LongClick: "+p);
+                return true;// returning true instead of false, works for me
+            }
+        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +198,7 @@ public final class AlarmsAdapter extends RecyclerView.Adapter<AlarmsAdapter.View
 
     public void setAlarms(List<Alarm> alarms) {
         mAlarms = alarms;
+
         notifyDataSetChanged();
     }
 
