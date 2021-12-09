@@ -60,6 +60,9 @@
             android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
+            android:name=".SplashScreen"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".ScheduleActivity"
             android:parentActivityName=".MainActivity" />
         <activity

@@ -2,12 +2,15 @@ package com.zentech.audibookfinalv;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -15,19 +18,35 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class NoteDetails extends AppCompatActivity {
 
     private TextView mtitleofnotedetail, mcontentofnotedetail;
-    FloatingActionButton mgotoeditnote;
+    ImageButton mgotoeditnote, backbttn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_details);
 
+        View someView = findViewById(R.id.noteDetails);
+        View root = someView.getRootView();
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.AppTheme);
+            root.setBackgroundColor(Color.parseColor("#FF001219"));
+        }else {
+            setTheme(R.style.Theme_Light);
+            root.setBackgroundColor(getResources().getColor(android.R.color.white));
+        }
+
         mtitleofnotedetail = findViewById(R.id.titleofnotedetail);
         mcontentofnotedetail = findViewById(R.id.contentofnotedetail);
         mgotoeditnote = findViewById(R.id.gotoeditnote);
-        Toolbar toolbar = findViewById(R.id.toolbarofnotedetail);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        backbttn = findViewById(R.id.backbttnD);
+        backbttn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BackButton();
+            }
+        });
+
 
         Intent data = getIntent();
 
@@ -56,6 +75,12 @@ public class NoteDetails extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void BackButton(){
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        overridePendingTransition(0,0);
+        finish();
     }
 
 }

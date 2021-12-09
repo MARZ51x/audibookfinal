@@ -4,54 +4,160 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/noteDetails"
     tools:context=".NoteDetails">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarofnotedetail"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/NavGrey">
-
-        <TextView
-            android:id="@+id/titleofnotedetail"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="@dimen/_12sdp"
-            android:text="Title Displayed Here"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_25ssp"
-            android:textStyle="bold">
-
-        </TextView>
-
-    </androidx.appcompat.widget.Toolbar>
-
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="@dimen/_15ssp"
-        android:background="@color/White"
-        android:gravity="top|left"
-        android:textColor="@color/black"
-        android:text="Content displayed here."
-        android:layout_below="@id/toolbarofnotedetail"
-        android:padding="@dimen/_17sdp"
-        android:id="@+id/contentofnotedetail">
+        android:layout_marginBottom="@dimen/_40sdp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/_10sdp">
 
-    </TextView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/gotoeditnote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="@dimen/_30sdp"
-        android:layout_marginBottom="@dimen/_30sdp"
-        android:background="@color/White"
-        android:src="@drawable/ic_login_arrow"
-        app:maxImageSize="@dimen/_30sdp">
+            <RelativeLayout
+                android:id="@+id/Appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+                <ImageButton
+                    android:id="@+id/backbttnD"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:src="@drawable/ic_baseline_arrow_back_ios_24">
+
+                </ImageButton>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toEndOf="@id/backbttnD"
+                    android:gravity="center"
+                    android:text="Detail Note"
+                    android:textColor="@color/accent"
+                    android:textSize="@dimen/_20ssp">
+
+                </TextView>
+
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/titleofnotedetail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:fontFamily="@font/roboto_bold"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no"
+                android:includeFontPadding="false"
+                android:inputType="text"
+                android:textColor="@color/accent"
+                android:textColorHint="@color/TextHint"
+                android:textSize="@dimen/_20ssp"
+                app:layout_constraintTop_toBottomOf="@id/Appbar" />
+
+            <TextView
+                android:id="@+id/textDateTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:includeFontPadding="false"
+                android:textColor="@color/Icons"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintEnd_toEndOf="@id/titleofnotedetail"
+                app:layout_constraintStart_toStartOf="@id/titleofnotedetail"
+                app:layout_constraintTop_toBottomOf="@id/titleofnotedetail" />
+
+            <TextView
+                android:id="@+id/inputNoteSubtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:background="@null"
+                android:fontFamily="@font/roboto_medium"
+                android:hint=""
+                android:importantForAutofill="no"
+                android:includeFontPadding="false"
+                android:inputType="textMultiLine"
+                android:paddingTop="@dimen/_8sdp"
+                android:paddingBottom="@dimen/_8sdp"
+                android:textColor="@color/Subtitle"
+                android:textColorHint="@color/TextHint"
+                android:textSize="@dimen/_13sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/viewSubtitleIndicator"
+                app:layout_constraintTop_toBottomOf="@id/textDateTime" />
+
+            <View
+                android:id="@+id/viewSubtitleIndicator"
+                android:layout_width="@dimen/_5sdp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:background="@drawable/bg_subtitle_indicator"
+                app:layout_constraintBottom_toBottomOf="@id/inputNoteSubtitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/inputNoteSubtitle" />
+
+            <TextView
+                android:id="@+id/contentofnotedetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:background="@null"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="top"
+                android:hint=""
+                android:importantForAutofill="no"
+                android:includeFontPadding="false"
+                android:inputType="textMultiLine"
+                android:minHeight="@dimen/_100sdp"
+                android:textColor="@color/accent"
+                android:textColorHint="@color/TextHint"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inputNoteSubtitle" />
+
+
+            <ImageButton
+                android:id="@+id/gotoeditnote"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:background="@drawable/bg_add_note"
+                android:contentDescription="@string/app_name"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/ic_baseline_edit_24"
+                app:layout_constraintBottom_toBottomOf="@id/contentofnotedetail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/contentofnotedetail"
+                app:tint="@color/Primary" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

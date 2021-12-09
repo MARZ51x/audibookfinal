@@ -2,13 +2,16 @@ package com.zentech.audibookfinalv;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,7 +28,7 @@ import java.util.Map;
 public class CreateNote extends AppCompatActivity {
 
     private EditText mcreatetitleofnote, mcreatecontentofnote;
-    private FloatingActionButton msavenote;
+    private ImageButton msavenote, backbttn;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -36,18 +39,32 @@ public class CreateNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
+        View someView = findViewById(R.id.createNote);
+        View root = someView.getRootView();
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.AppTheme);
+            root.setBackgroundColor(Color.parseColor("#FF001219"));
+        }else {
+            setTheme(R.style.Theme_Light);
+            root.setBackgroundColor(getResources().getColor(android.R.color.white));
+        }
+
         msavenote = findViewById(R.id.savenote);
         mcreatetitleofnote = findViewById(R.id.createtitleofnote);
         mcreatecontentofnote = findViewById(R.id.createcontentofnote);
-
-        Toolbar toolbar = findViewById(R.id.toolbarofcreatenote);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        backbttn = findViewById(R.id.backbttnC);
+
+        backbttn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BackButton();
+            }
+        });
 
 
         msavenote.setOnClickListener(new View.OnClickListener() {
@@ -94,15 +111,11 @@ public class CreateNote extends AppCompatActivity {
 
 
     }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        if(item.getItemId()==android.R.id.home)
-        {
-            onBackPressed();
-        }
-
-        return super.onOptionsItemSelected(item);
+    public void BackButton(){
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        overridePendingTransition(0,0);
+        finish();
     }
+
 }

@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -27,7 +30,7 @@ public class EditNoteActivity extends AppCompatActivity {
 
     Intent data;
     EditText medittitleofnote, meditcontentofnote;
-    FloatingActionButton msaveeditnote;
+    ImageButton msaveeditnote, backbttn;
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
@@ -37,6 +40,16 @@ public class EditNoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note);
+
+        View someView = findViewById(R.id.editNote);
+        View root = someView.getRootView();
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.AppTheme);
+            root.setBackgroundColor(Color.parseColor("#FF001219"));
+        }else {
+            setTheme(R.style.Theme_Light);
+            root.setBackgroundColor(getResources().getColor(android.R.color.white));
+        }
 
         medittitleofnote = findViewById(R.id.edittitleofnote);
         meditcontentofnote = findViewById(R.id.editcontentofnote);
@@ -48,9 +61,14 @@ public class EditNoteActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        Toolbar toolbar = findViewById(R.id.toolbarofeditnote);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        backbttn= findViewById(R.id.backbttnE);
+
+        backbttn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BackButton();
+            }
+        });
 
         msaveeditnote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +124,12 @@ public class EditNoteActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void BackButton(){
+        Intent intent = new Intent(this, NoteDetails.class);
+        startActivity(intent);
+        overridePendingTransition(0,0);
+        finish();
     }
 
 }

@@ -2,6 +2,7 @@ package com.zentech.audibookfinalv;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -127,11 +128,11 @@ public class HomeActivity extends AppCompatActivity {
         noteAdapter = new FirestoreRecyclerAdapter<firebasemodel, NoteViewHolder>(allusernotes) {
             @Override
             protected void onBindViewHolder(@NonNull NoteViewHolder noteViewHolder, int i, @NonNull firebasemodel firebasemodel) {
+                int[] androidColors = getResources().getIntArray(R.array.androidcolors);
+                int randomAndroidColor = androidColors[i % androidColors.length];
 
+                noteViewHolder.mnote.setBackgroundTintList(ColorStateList.valueOf(randomAndroidColor));
                 ImageView popupbutton = noteViewHolder.itemView.findViewById(R.id.menupopupbtn);
-
-                int colorcode = getRandomColor();
-                noteViewHolder.mnote.setBackgroundColor(noteViewHolder.itemView.getResources().getColor(colorcode,null));
 
                 noteViewHolder.notetitle.setText(firebasemodel.getTitle());
                 noteViewHolder.notecontent.setText(firebasemodel.getContent());
@@ -268,7 +269,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 //GetRANDOM COLOR
-    private int getRandomColor()
+/*    private int getRandomColor()
     {
         List<Integer> colorcode = new ArrayList<>();
         colorcode.add(R.color.Accent);
@@ -277,7 +278,7 @@ public class HomeActivity extends AppCompatActivity {
         int number = random.nextInt(colorcode.size());
 
         return colorcode.get(number);
-    }
+    }*/
 
 
 //NOTE ADAPTER
