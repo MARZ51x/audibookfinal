@@ -3,6 +3,9 @@ package com.zentech.audibookfinalv;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -130,8 +133,20 @@ public class HomeActivity extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull NoteViewHolder noteViewHolder, int i, @NonNull firebasemodel firebasemodel) {
                 int[] androidColors = getResources().getIntArray(R.array.androidcolors);
                 int randomAndroidColor = androidColors[i % androidColors.length];
+                GradientDrawable border = new GradientDrawable();
 
-                noteViewHolder.mnote.setBackgroundTintList(ColorStateList.valueOf(randomAndroidColor));
+                //noteViewHolder.mnote.setBackgroundTintList(ColorStateList.valueOf(randomAndroidColor));
+                border.setColor(randomAndroidColor); //white background
+                //border.setStroke(4, 0xFF000000);
+                border.setCornerRadius(45);
+                border.setStroke(6, Color.BLACK);
+                //black border with full opacity
+                if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                    noteViewHolder.mnote.setBackgroundDrawable(border);
+                } else {
+                    noteViewHolder.mnote.setBackground(border);
+                }
+
                 ImageView popupbutton = noteViewHolder.itemView.findViewById(R.id.menupopupbtn);
 
                 noteViewHolder.notetitle.setText(firebasemodel.getTitle());
