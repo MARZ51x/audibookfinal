@@ -72,6 +72,7 @@ public class NoteDetails extends AppCompatActivity {
         if(item.getItemId()==android.R.id.home)
         {
             onBackPressed();
+
         }
 
         return super.onOptionsItemSelected(item);
