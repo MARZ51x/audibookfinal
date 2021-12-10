@@ -49,8 +49,12 @@
 
             <ImageView
                 android:id="@+id/menupopupbtn"
+                android:layout_gravity="right"
+                android:visibility="invisible"
+                android:src="@drawable/ic_baseline_more_vert_24"
                 android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_15sdp" />
+                android:layout_marginBottom="5dp"
+                android:layout_height="@dimen/_18sdp" />
 
         </LinearLayout>
 

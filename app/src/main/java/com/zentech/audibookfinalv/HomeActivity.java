@@ -39,10 +39,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.zentech.audibookfinalv.data.DatabaseHelper;
+import com.zentech.audibookfinalv.service.AlarmReceiver;
+import com.zentech.audibookfinalv.service.LoadAlarmsService;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class HomeActivity extends AppCompatActivity {
     private Button button_sched, button_settings, button_sched2, button_settings2, maddnotebtn;
@@ -135,17 +140,24 @@ public class HomeActivity extends AppCompatActivity {
                 int randomAndroidColor = androidColors[i % androidColors.length];
                 GradientDrawable border = new GradientDrawable();
 
-                //noteViewHolder.mnote.setBackgroundTintList(ColorStateList.valueOf(randomAndroidColor));
-                border.setColor(randomAndroidColor); //white background
-                //border.setStroke(4, 0xFF000000);
+                border.setColor(randomAndroidColor);
                 border.setCornerRadius(45);
-                border.setStroke(6, Color.BLACK);
-                //black border with full opacity
-                if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-                    noteViewHolder.mnote.setBackgroundDrawable(border);
-                } else {
-                    noteViewHolder.mnote.setBackground(border);
+                if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+                    border.setStroke(4, Color.WHITE);
+                    if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                        noteViewHolder.mnote.setBackgroundDrawable(border);
+                    } else {
+                        noteViewHolder.mnote.setBackground(border);
+                    }
+                }else {
+                    border.setStroke(6, Color.BLACK);
+                    if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                        noteViewHolder.mnote.setBackgroundDrawable(border);
+                    } else {
+                        noteViewHolder.mnote.setBackground(border);
+                    }
                 }
+
 
                 ImageView popupbutton = noteViewHolder.itemView.findViewById(R.id.menupopupbtn);
 
@@ -168,8 +180,61 @@ public class HomeActivity extends AppCompatActivity {
                         //Toast.makeText(getApplicationContext(), "This is Clicked", Toast.LENGTH_SHORT).show();
                     }
                 });
+                noteViewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
 
-                popupbutton.setOnClickListener(new View.OnClickListener() {
+                        PopupMenu popupMenu = new PopupMenu(view.getContext(),view);
+                        popupMenu.setGravity(Gravity.END);
+                        popupMenu.getMenu().add("Edit").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+
+                                Intent intent = new Intent(view.getContext(),EditNoteActivity.class);
+                                intent.putExtra("title",firebasemodel.getTitle());
+                                intent.putExtra("content",firebasemodel.getContent());
+                                intent.putExtra("noteId",docId);
+                                view.getContext().startActivity(intent);
+
+                                return false;
+                            }
+                        });
+
+                        popupMenu.getMenu().add("Delete").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+                                //Toast.makeText(v.getContext(),"Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                DocumentReference documentReference = firebaseFirestore.collection("notes").document(firebaseUser.getUid())
+                                        .collection("myNotes").document(docId);
+
+                                documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(view.getContext(),"Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(view.getContext(),"Failed to Delete", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+
+                                return false;
+                            }
+                        });
+
+                        popupMenu.show();
+
+                        int p=noteViewHolder.getLayoutPosition();
+                        System.out.println("LongClick: "+p);
+                        return true;// returning true instead of false, works for me
+                    }
+                });
+
+
+
+      /*          popupbutton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
@@ -216,7 +281,7 @@ public class HomeActivity extends AppCompatActivity {
                         popupMenu.show();
 
                     }
-                });
+                });*/
 
             }
 

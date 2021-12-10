@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,21 +20,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.zentech.audibookfinalv.adapter.AlarmsAdapter;
-import com.zentech.audibookfinalv.data.DatabaseHelper;
-import com.zentech.audibookfinalv.model.Alarm;
 import com.zentech.audibookfinalv.util.AlarmUtils;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 
 public class ScheduleActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Button button_home, button_settings, button_home2, button_settings2;
     ConstraintLayout nav,nav2, main;
     Spinner spinner;
-    private List<Alarm> mAlarms;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -115,6 +108,7 @@ public class ScheduleActivity extends AppCompatActivity implements AdapterView.O
                 SettingsActivity();
             }
         });
+
     }
     public void HomeActivity(){
         Intent intent = new Intent(this, HomeActivity.class);
@@ -138,24 +132,6 @@ public class ScheduleActivity extends AppCompatActivity implements AdapterView.O
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-    public void sortAlarm() {
-        String value = "sort"; // default value if no value was found
-        final SharedPreferences sharedPreferencestitle = this.getSharedPreferences("isSort", 0);
-        value = sharedPreferencestitle.getString("isSort", value);
 
-        String valSort = spinner.getSelectedItem().toString();
-
-        switch (valSort) {
-            case "Oldest":
-                sharedPreferencestitle.edit().putString("isTitle", "Oldest").apply();
-                break;
-            case "Newest":
-                sharedPreferencestitle.edit().putString("isTitle", "Newest").apply();
-                break;
-            default:
-
-                break;
-        }
-    }
 }
 

@@ -44,10 +44,6 @@ public final class AlarmsAdapter extends RecyclerView.Adapter<AlarmsAdapter.View
         final Context c = parent.getContext();
         final View v = LayoutInflater.from(c).inflate(R.layout.alarm_row, parent, false);
 
-        String value = "sort"; // default value if no value was found
-        final SharedPreferences sharedPreferencestitle = c.getSharedPreferences("isSort", 0);
-        value = sharedPreferencestitle.getString("isSort", value);
-        if(value =="Oldest"){
             Collections.sort(mAlarms, new Comparator<Alarm>() {
                 @Override
                 public int compare(Alarm o1, Alarm o2) {
@@ -58,20 +54,6 @@ public final class AlarmsAdapter extends RecyclerView.Adapter<AlarmsAdapter.View
                     }
                 }
             });
-
-        }else{
-            Collections.sort(mAlarms, new Comparator<Alarm>() {
-                @Override
-                public int compare(Alarm o1, Alarm o2) {
-                    if(o1.notificationId() > o2.notificationId()) {
-                        return -1;
-                    } else {
-                        return 1;
-                    }
-                }
-            });
-        }
-
 
         return new ViewHolder(v);
     }
