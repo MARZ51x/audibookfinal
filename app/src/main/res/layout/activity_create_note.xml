@@ -46,7 +46,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
                     android:layout_toEndOf="@id/backbttnC"
                     android:gravity="center"
                     android:text="Edit Note"
@@ -54,6 +53,21 @@
                     android:textSize="@dimen/_20ssp">
 
                 </TextView>
+
+                <ImageView
+                    android:id="@+id/imagePDF"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginHorizontal="@dimen/_20sdp"
+                    android:layout_toStartOf="@id/savenote"
+                    android:contentDescription="@string/app_name"
+                    android:padding="@dimen/_4sdp"
+                    android:src="@drawable/bg_pdf"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:tint="@color/accent" />
 
                 <ImageButton
                     android:id="@+id/savenote"
@@ -202,19 +216,6 @@
         android:src="@drawable/ic_mic"
         app:tint="@color/Primary" />
 
-    <ImageView
-        android:id="@+id/imagePDF"
-        android:layout_width="@dimen/_35sdp"
-        android:layout_height="@dimen/_35sdp"
-        android:layout_marginHorizontal="@dimen/_20sdp"
-        android:contentDescription="@string/app_name"
-        android:padding="@dimen/_4sdp"
-        android:src="@drawable/bg_pdf"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/wave"
-        app:tint="@color/accent" />
+
 
 </RelativeLayout>

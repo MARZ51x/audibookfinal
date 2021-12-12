@@ -70,7 +70,7 @@
                 android:importantForAutofill="no"
                 android:includeFontPadding="false"
                 android:inputType="text"
-                android:textColor="@color/accent"
+                android:textColor="?attr/text_color"
                 android:textColorHint="@color/TextHint"
                 android:textSize="@dimen/_20ssp"
                 app:layout_constraintTop_toBottomOf="@id/Appbar" />
@@ -92,7 +92,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="@dimen/_12sdp"
                 android:background="@null"
                 android:fontFamily="@font/roboto_medium"
@@ -102,10 +102,11 @@
                 android:inputType="textMultiLine"
                 android:paddingTop="@dimen/_8sdp"
                 android:paddingBottom="@dimen/_8sdp"
-                android:textColor="@color/Subtitle"
+                android:textColor="?attr/text_color"
                 android:textColorHint="@color/TextHint"
                 android:textSize="@dimen/_13sdp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/viewSubtitleIndicator"
                 app:layout_constraintTop_toBottomOf="@id/textDateTime" />
 
@@ -149,7 +150,7 @@
             android:includeFontPadding="false"
             android:inputType="textMultiLine"
             android:minHeight="@dimen/_100sdp"
-            android:textColor="@color/accent"
+            android:textColor="?attr/text_color"
             android:textColorHint="@color/TextHint"
             android:textSize="@dimen/_16ssp"
             app:layout_constraintBottom_toBottomOf="parent" />
