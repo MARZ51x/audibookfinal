@@ -155,11 +155,16 @@
             android:id="@+id/NotesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_435sdp"
-            android:scrollbars="vertical"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="8dp"
             android:paddingStart="@dimen/_5sdp"
             android:paddingEnd="@dimen/_5sdp"
-            app:layout_constraintTop_toBottomOf="@id/layoutSearch" />
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/add_note_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutSearch"
+            app:layout_constraintVertical_bias="0.14" />
 
         <Button
             android:id="@+id/add_note_btn"

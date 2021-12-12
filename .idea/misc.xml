@@ -71,9 +71,16 @@
         <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/activity_edit_note.xml" value="0.264" />
         <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/activity_forgot_password.xml" value="0.2" />
         <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/activity_home.xml" value="0.2" />
-        <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/activity_note_details.xml" value="0.4" />
+        <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/activity_note_details.xml" value="0.15052083333333333" />
+        <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/activity_schedule.xml" value="0.264" />
         <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/activity_settings.xml" value="0.264" />
+        <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/fragment_add_edit_alarm.xml" value="0.15052083333333333" />
+        <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/fragment_alarm_landing_page.xml" value="0.15052083333333333" />
+        <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/fragment_first.xml" value="0.15052083333333333" />
+        <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/fragment_main.xml" value="0.15052083333333333" />
+        <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/fragment_second.xml" value="0.15052083333333333" />
         <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/notes_layout.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/johmp/OneDrive/Desktop/audibookfinal/app/src/main/res/layout/simple_spinner_dropdown_item.xml" value="0.15052083333333333" />
       </map>
     </option>
   </component>
