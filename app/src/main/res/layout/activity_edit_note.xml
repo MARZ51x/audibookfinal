@@ -8,9 +8,10 @@
     tools:context=".EditNoteActivity">
 
     <ScrollView
+        android:id="@+id/scrollDetailsE"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/_40sdp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:clipToPadding="false"
         android:paddingBottom="@dimen/_10sdp">
 
@@ -130,16 +131,24 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/inputNoteSubtitle" />
 
-            <pl.droidsonroids.gif.GifImageView
-                android:id="@+id/edit_wave"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_height="@dimen/_150sdp"
-                android:src="@drawable/audibook_wave"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/editcontentofnote">
 
-            </pl.droidsonroids.gif.GifImageView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+    <ScrollView
+        android:id="@+id/scrollTextE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scrollDetailsE"
+        android:layout_alignBottom="@id/edit_imageSpeak"
+        android:layout_marginBottom="@dimen/_50sdp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/_10sdp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true">
 
             <EditText
                 android:id="@+id/editcontentofnote"
@@ -160,27 +169,37 @@
                 android:textColor="@color/accent"
                 android:textColorHint="@color/TextHint"
                 android:textSize="@dimen/_13ssp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/inputNoteSubtitle" />
-
-
-            <ImageView
-                android:id="@+id/edit_imageSpeak"
-                android:layout_width="@dimen/_45sdp"
-                android:layout_height="@dimen/_45sdp"
-                android:layout_marginEnd="@dimen/_30sdp"
-                android:background="@drawable/bg_add_note"
-                android:contentDescription="@string/app_name"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/ic_mic"
-                app:layout_constraintBottom_toBottomOf="@id/editcontentofnote"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editcontentofnote"
-                app:tint="@color/Primary" />
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/edit_wave"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:src="@drawable/audibook_wave"
+        android:layout_centerInParent="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+    </pl.droidsonroids.gif.GifImageView>
+
+    <ImageView
+        android:id="@+id/edit_imageSpeak"
+        android:layout_width="@dimen/_45sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="280dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_add_note"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/ic_mic"
+        app:tint="@color/Primary" />
 
 </RelativeLayout>

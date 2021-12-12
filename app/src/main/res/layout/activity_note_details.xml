@@ -8,9 +8,10 @@
     tools:context=".NoteDetails">
 
     <ScrollView
+        android:id="@+id/scrollDetails"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/_40sdp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:clipToPadding="false"
         android:paddingBottom="@dimen/_10sdp">
 
@@ -53,7 +54,6 @@
                     android:textSize="@dimen/_20ssp">
 
                 </TextView>
-
 
 
             </RelativeLayout>
@@ -119,45 +119,56 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/inputNoteSubtitle" />
 
-            <TextView
-                android:id="@+id/contentofnotedetail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_12sdp"
-                android:layout_marginBottom="@dimen/_15sdp"
-                android:background="@null"
-                android:fontFamily="@font/roboto_regular"
-                android:gravity="top"
-                android:hint=""
-                android:importantForAutofill="no"
-                android:includeFontPadding="false"
-                android:inputType="textMultiLine"
-                android:minHeight="@dimen/_100sdp"
-                android:textColor="@color/accent"
-                android:textColorHint="@color/TextHint"
-                android:textSize="@dimen/_16ssp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/inputNoteSubtitle" />
-
-
-            <ImageButton
-                android:id="@+id/gotoeditnote"
-                android:layout_width="@dimen/_45sdp"
-                android:layout_height="@dimen/_45sdp"
-                android:layout_marginEnd="@dimen/_30sdp"
-                android:background="@drawable/bg_add_note"
-                android:contentDescription="@string/app_name"
-                android:padding="@dimen/_5sdp"
-                android:src="@drawable/ic_baseline_edit_24"
-                app:layout_constraintBottom_toBottomOf="@id/contentofnotedetail"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/contentofnotedetail"
-                app:tint="@color/Primary" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/scrollText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scrollDetails"
+        android:layout_alignBottom="@id/gotoeditnote"
+        android:layout_marginBottom="@dimen/_50sdp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/_10sdp">
+
+        <TextView
+            android:id="@+id/contentofnotedetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:background="@null"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="top"
+            android:hint=""
+            android:importantForAutofill="no"
+            android:includeFontPadding="false"
+            android:inputType="textMultiLine"
+            android:minHeight="@dimen/_100sdp"
+            android:textColor="@color/accent"
+            android:textColorHint="@color/TextHint"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </ScrollView>
 
+    <ImageButton
+        android:id="@+id/gotoeditnote"
+        android:layout_width="@dimen/_45sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="280dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_add_note"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/ic_baseline_edit_24"
+        app:tint="@color/Primary" />
 </RelativeLayout>

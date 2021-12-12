@@ -29,7 +29,7 @@ import com.zentech.audibookfinalv.util.AlarmUtils;
 public class ScheduleActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Button button_home, button_settings, button_home2, button_settings2;
     ConstraintLayout nav,nav2, main;
-    Spinner spinner;
+   /* Spinner spinner;*/
     AlarmsAdapter alarmsAdapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class ScheduleActivity extends AppCompatActivity implements AdapterView.O
         main = findViewById(R.id.main);
         nav = findViewById(R.id.navbar);
         nav2 = findViewById(R.id.navbar2);
-        spinner = findViewById(R.id.spinner);
+      /*  spinner = findViewById(R.id.spinner);*/
 
         final Button fab = findViewById(R.id.fab2);
         fab.setOnClickListener((View view) -> {
@@ -77,11 +77,11 @@ public class ScheduleActivity extends AppCompatActivity implements AdapterView.O
             main.setLayoutParams(params);
         }
 /////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+   /*     ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.Sort, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        spinner.setOnItemSelectedListener(this);*/
 
         button_home = (Button) findViewById(R.id.homebttn);
         button_home.setOnClickListener(new View.OnClickListener() {
@@ -128,10 +128,10 @@ public class ScheduleActivity extends AppCompatActivity implements AdapterView.O
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+    /*    if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
             ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
             spinner.getBackground().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
-        }
+        }*/
     }
 
     @Override

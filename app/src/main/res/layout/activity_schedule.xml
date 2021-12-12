@@ -118,7 +118,7 @@
 
         </TextView>
 
-        <Spinner
+<!--        <Spinner
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sched_text" />
+            app:layout_constraintTop_toBottomOf="@+id/sched_text" />-->
 
         <fragment
             android:id="@+id/main_fragment"
@@ -142,7 +142,7 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingBottom="@dimen/activity_vertical_margin"
             app:layout_constraintBottom_toTopOf="@id/fab2"
-            app:layout_constraintTop_toBottomOf="@+id/spinner"
+            app:layout_constraintTop_toBottomOf="@+id/sched_text"
             app:layout_constraintVertical_bias="0.0"
             tools:context="com.zentech.audibookfinalv.ScheduleActivity"
             tools:layout_editor_absoluteX="157dp">

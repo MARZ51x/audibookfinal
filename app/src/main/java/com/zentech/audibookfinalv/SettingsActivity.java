@@ -56,7 +56,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
 /////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
-        boolean value = true; // default value if no value was found
+        boolean value = false; // default value if no value was found
         int value2 = AppCompatDelegate.MODE_NIGHT_NO;
         final SharedPreferences sharedPreferences = getSharedPreferences("isChecked", 0);
         final SharedPreferences sharedPreferences2 = getSharedPreferences("defaultNightMode", 0);
@@ -83,7 +83,7 @@ public class SettingsActivity extends AppCompatActivity {
 
 
 /////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
-        boolean valueNav = true;
+        boolean valueNav = false;
         final SharedPreferences sharedPreferencesNav = getSharedPreferences("isCheckedNav", 0);
         valueNav = sharedPreferencesNav.getBoolean("isCheckedNav", valueNav); // retrieve the value of your key
         aSwitch.setChecked(valueNav);
