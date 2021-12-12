@@ -48,12 +48,11 @@
                     android:layout_alignParentBottom="true"
                     android:layout_toEndOf="@id/backbttnD"
                     android:gravity="center"
-                    android:text="Detail Note"
+                    android:text="Note Detail"
                     android:textColor="@color/accent"
                     android:textSize="@dimen/_20ssp">
 
                 </TextView>
-
 
 
             </RelativeLayout>
@@ -70,7 +69,7 @@
                 android:importantForAutofill="no"
                 android:includeFontPadding="false"
                 android:inputType="text"
-                android:textColor="@color/accent"
+                android:textColor="?attr/text_color"
                 android:textColorHint="@color/TextHint"
                 android:textSize="@dimen/_20ssp"
                 app:layout_constraintTop_toBottomOf="@id/Appbar" />
@@ -135,7 +134,7 @@
                 android:includeFontPadding="false"
                 android:inputType="textMultiLine"
                 android:minHeight="@dimen/_100sdp"
-                android:textColor="@color/accent"
+                android:textColor="?attr/text_color"
                 android:textColorHint="@color/TextHint"
                 android:textSize="@dimen/_16ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
