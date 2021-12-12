@@ -54,6 +54,18 @@
 
                 </TextView>
 
+                <ImageButton
+                    android:id="@+id/gotoeditnote"
+                    android:layout_width="36sp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center"
+                    android:background="@drawable/save_rounded"
+                    android:foregroundTint="@color/Accent"
+                    android:src="@drawable/ic_baseline_edit_24">
+
+                </ImageButton>
+
 
             </RelativeLayout>
 
@@ -141,11 +153,11 @@
                 app:layout_constraintTop_toBottomOf="@id/inputNoteSubtitle" />
 
 
-            <ImageButton
+            <!--<ImageButton
                 android:id="@+id/gotoeditnote"
                 android:layout_width="@dimen/_45sdp"
                 android:layout_height="@dimen/_45sdp"
-                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginEnd="32dp"
                 android:background="@drawable/bg_add_note"
                 android:contentDescription="@string/app_name"
                 android:padding="@dimen/_5sdp"
@@ -153,7 +165,8 @@
                 app:layout_constraintBottom_toBottomOf="@id/contentofnotedetail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/contentofnotedetail"
-                app:tint="@color/Primary" />
+                app:layout_constraintVertical_bias="0.491"
+                app:tint="@color/Primary" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
