@@ -89,8 +89,9 @@ public final class AddEditAlarmFragment extends Fragment implements IOnBackPress
             }
         });
 
+        final long minutes =1;
         mTimePicker = (TimePicker) v.findViewById(R.id.edit_alarm_time_picker);
-        ViewUtils.setTimePickerTime(mTimePicker, alarm.getTime());
+        ViewUtils.setTimePickerTime(mTimePicker, alarm.getTime()+minutes*60000);
 
         mLabel = (EditText) v.findViewById(R.id.edit_alarm_label);
         mLabel.setText(alarm.getLabel());

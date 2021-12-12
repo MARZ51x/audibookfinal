@@ -232,10 +232,7 @@ public class EditNoteActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     public void BackButton(){
-        Intent intent = new Intent(this, NoteDetails.class);
-        startActivity(intent);
-        overridePendingTransition(0,0);
-        finish();
+        onBackPressed();
     }
 
 }

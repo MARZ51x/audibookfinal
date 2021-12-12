@@ -7,6 +7,9 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,9 +17,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.SearchView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,8 +56,9 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class HomeActivity extends AppCompatActivity {
     private Button button_sched, button_settings, button_sched2, button_settings2, maddnotebtn;
-
+    private EditText inputSearch;
     private FirebaseAuth firebaseAuth;
+    private ImageView search;
     FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
 
@@ -91,6 +97,7 @@ public class HomeActivity extends AppCompatActivity {
         main = findViewById(R.id.main);
         nav = findViewById(R.id.navbar);
         nav2 = findViewById(R.id.navbar2);
+        inputSearch = findViewById(R.id.inputSearch);
 
 /////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
         boolean valueNav= true;
@@ -203,22 +210,40 @@ public class HomeActivity extends AppCompatActivity {
                         popupMenu.getMenu().add("Delete").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(MenuItem item) {
-                                //Toast.makeText(v.getContext(),"Deleted Successfully", Toast.LENGTH_SHORT).show();
-                                DocumentReference documentReference = firebaseFirestore.collection("notes").document(firebaseUser.getUid())
-                                        .collection("myNotes").document(docId);
+                                new SweetAlertDialog(view.getContext(), SweetAlertDialog.WARNING_TYPE)
+                                        .setTitleText("Delete Note?")
+                                        .setContentText("")
+                                        .setConfirmText("Delete")
+                                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                            @Override
+                                            public void onClick(SweetAlertDialog sDialog) {
+                                                sDialog
+                                                        .setTitleText("Successful")
+                                                        .setContentText("Note deleted")
+                                                        .setConfirmText("OK")
+                                                        .setConfirmClickListener(null)
+                                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
 
-                                documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Toast.makeText(view.getContext(),"Deleted Successfully", Toast.LENGTH_SHORT).show();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(view.getContext(),"Failed to Delete", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
 
+                                                //Toast.makeText(v.getContext(),"Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                                DocumentReference documentReference = firebaseFirestore.collection("notes").document(firebaseUser.getUid())
+                                                        .collection("myNotes").document(docId);
+
+                                                documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void unused) {
+                                                        Toast.makeText(view.getContext(),"Deleted Successfully", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }).addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(@NonNull Exception e) {
+                                                        Toast.makeText(view.getContext(),"Failed to Delete", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+
+                                            }
+                                        })
+                                        .show();
 
                                 return false;
                             }
@@ -232,56 +257,6 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 });
 
-
-
-      /*          popupbutton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        PopupMenu popupMenu = new PopupMenu(v.getContext(),v);
-                        popupMenu.setGravity(Gravity.END);
-                        popupMenu.getMenu().add("Edit").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                            @Override
-                            public boolean onMenuItemClick(MenuItem item) {
-
-                                Intent intent = new Intent(v.getContext(),EditNoteActivity.class);
-                                intent.putExtra("title",firebasemodel.getTitle());
-                                intent.putExtra("content",firebasemodel.getContent());
-                                intent.putExtra("noteId",docId);
-                                v.getContext().startActivity(intent);
-
-                                return false;
-                            }
-                        });
-
-                        popupMenu.getMenu().add("Delete").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                            @Override
-                            public boolean onMenuItemClick(MenuItem item) {
-                                //Toast.makeText(v.getContext(),"Deleted Successfully", Toast.LENGTH_SHORT).show();
-                                DocumentReference documentReference = firebaseFirestore.collection("notes").document(firebaseUser.getUid())
-                                        .collection("myNotes").document(docId);
-
-                                documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Toast.makeText(v.getContext(),"Deleted Successfully", Toast.LENGTH_SHORT).show();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(v.getContext(),"Failed to Delete", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-
-
-                                return false;
-                            }
-                        });
-
-                        popupMenu.show();
-
-                    }
-                });*/
 
             }
 
@@ -330,6 +305,8 @@ public class HomeActivity extends AppCompatActivity {
         });
 
     }
+
+
     //Firestore Connection
     public class NoteViewHolder extends RecyclerView.ViewHolder
     {
@@ -347,19 +324,6 @@ public class HomeActivity extends AppCompatActivity {
 
         }
     }
-
-//GetRANDOM COLOR
-/*    private int getRandomColor()
-    {
-        List<Integer> colorcode = new ArrayList<>();
-        colorcode.add(R.color.Accent);
-
-        Random random = new Random();
-        int number = random.nextInt(colorcode.size());
-
-        return colorcode.get(number);
-    }*/
-
 
 //NOTE ADAPTER
 

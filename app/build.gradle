@@ -70,4 +70,7 @@ dependencies {
     //new
     implementation "com.firebaseui:firebase-ui-firestore:4.1.0"
 
+    //for PDF
+    implementation 'com.itextpdf:itextg:5.5.10'
+
 }

@@ -78,10 +78,7 @@ public class NoteDetails extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     public void BackButton(){
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
-        overridePendingTransition(0,0);
-        finish();
+        onBackPressed();
     }
 
 }

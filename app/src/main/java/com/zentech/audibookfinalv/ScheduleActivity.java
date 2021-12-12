@@ -3,6 +3,8 @@ package com.zentech.audibookfinalv;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.zentech.audibookfinalv.adapter.AlarmsAdapter;
 import com.zentech.audibookfinalv.util.AlarmUtils;
 
 
@@ -27,7 +30,7 @@ public class ScheduleActivity extends AppCompatActivity implements AdapterView.O
     private Button button_home, button_settings, button_home2, button_settings2;
     ConstraintLayout nav,nav2, main;
     Spinner spinner;
-
+    AlarmsAdapter alarmsAdapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 /////////////////////////////APP THEME///////////////////////////////////////////////////////////////////////////
@@ -125,7 +128,10 @@ public class ScheduleActivity extends AppCompatActivity implements AdapterView.O
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+            ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+            spinner.getBackground().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
+        }
     }
 
     @Override
