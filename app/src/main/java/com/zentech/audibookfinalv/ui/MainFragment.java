@@ -111,6 +111,10 @@ public final class MainFragment extends Fragment
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES) {
+                    ((TextView) parentView.getChildAt(0)).setTextColor(Color.WHITE);
+                    spinner.getBackground().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
+                }
                 Object item = parentView.getItemAtPosition(position);
                 if(position==0){
                     sharedPreferencesSpinner.edit().putInt("defaultSpinner",0).apply();
@@ -125,6 +129,7 @@ public final class MainFragment extends Fragment
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
         sortOldest();
