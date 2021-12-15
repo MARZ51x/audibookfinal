@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,12 +17,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.SearchView;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,22 +49,27 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.zentech.audibookfinalv.data.DatabaseHelper;
+import com.zentech.audibookfinalv.model.Alarm;
 import com.zentech.audibookfinalv.service.AlarmReceiver;
 import com.zentech.audibookfinalv.service.LoadAlarmsService;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Button button_sched, button_settings, button_sched2, button_settings2, maddnotebtn;
     private EditText inputSearch;
     private FirebaseAuth firebaseAuth;
     private ImageView search;
     FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
+    Spinner spinner;
+
 
     FirestoreRecyclerAdapter<firebasemodel, NoteViewHolder> noteAdapter;
 
@@ -98,6 +107,13 @@ public class HomeActivity extends AppCompatActivity {
         nav = findViewById(R.id.navbar);
         nav2 = findViewById(R.id.navbar2);
         inputSearch = findViewById(R.id.inputSearch);
+        spinner = findViewById(R.id.noteSpinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.noteSort, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
 /////////////////////////////NAV BAR///////////////////////////////////////////////////////////////////////////
         boolean valueNav= true;
@@ -135,8 +151,38 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        int valueSpinner = 0;
+        final SharedPreferences sharedPreferencesSpinnerNotes = this.getSharedPreferences("defaultSpinnerNotes", 0);
+        valueSpinner = sharedPreferencesSpinnerNotes.getInt("defaultSpinnerNotes", valueSpinner);
+        spinner.setSelection(valueSpinner);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES) {
+                    ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+                    spinner.getBackground().setColorFilter(getResources().getColor(R.color.White), PorterDuff.Mode.SRC_ATOP);
+                }
+
+                if(position==0){
+                    Query query= firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection(
+                            "myNotes").orderBy("title",Query.Direction.ASCENDING);
+                    sharedPreferencesSpinnerNotes.edit().putInt("defaultSpinnerNotes",0).apply();
+                }else{
+                    Query query = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection(
+                            "myNotes").orderBy("title",Query.Direction.DESCENDING);
+                    sharedPreferencesSpinnerNotes.edit().putInt("defaultSpinnerNotes",1).apply();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         Query query = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection(
-                "myNotes").orderBy("title",Query.Direction.ASCENDING);
+                "myNotes").orderBy("title",Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<firebasemodel> allusernotes = new FirestoreRecyclerOptions.Builder<firebasemodel>().setQuery(query, firebasemodel.class).build();
 
@@ -217,13 +263,6 @@ public class HomeActivity extends AppCompatActivity {
                                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                             @Override
                                             public void onClick(SweetAlertDialog sDialog) {
-                                                sDialog
-                                                        .setTitleText("Successful")
-                                                        .setContentText("Note deleted")
-                                                        .setConfirmText("OK")
-                                                        .setConfirmClickListener(null)
-                                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-
 
                                                 //Toast.makeText(v.getContext(),"Deleted Successfully", Toast.LENGTH_SHORT).show();
                                                 DocumentReference documentReference = firebaseFirestore.collection("notes").document(firebaseUser.getUid())
@@ -240,7 +279,13 @@ public class HomeActivity extends AppCompatActivity {
                                                         Toast.makeText(view.getContext(),"Failed to Delete", Toast.LENGTH_SHORT).show();
                                                     }
                                                 });
-
+                                                sDialog.dismissWithAnimation();
+                                            }
+                                        })
+                                        .setCancelButton("Cancel", new SweetAlertDialog.OnSweetClickListener() {
+                                            @Override
+                                            public void onClick(SweetAlertDialog sDialog) {
+                                                sDialog.dismissWithAnimation();
                                             }
                                         })
                                         .show();
@@ -306,6 +351,21 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
 
     //Firestore Connection
     public class NoteViewHolder extends RecyclerView.ViewHolder
@@ -353,6 +413,7 @@ public class HomeActivity extends AppCompatActivity {
         overridePendingTransition(0,0);
         finish();
     }
+
 
 
 }

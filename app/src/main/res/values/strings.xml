@@ -59,4 +59,9 @@
         <item>Newest</item>
     </string-array>
 
+    <string-array name="noteSort">
+        <item>A-Z</item>
+        <item>Z-A</item>
+    </string-array>
+
 </resources>

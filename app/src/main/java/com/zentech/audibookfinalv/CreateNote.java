@@ -81,6 +81,10 @@ public class CreateNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
 
+        msavenote = findViewById(R.id.savenote);
+        mcreatetitleofnote = findViewById(R.id.createtitleofnote);
+        mcreatecontentofnote = findViewById(R.id.createcontentofnote);
+
         //////////////////pdf////////////////////
         generatePDF = findViewById(R.id.imagePDF);
         generatePDF.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +111,7 @@ public class CreateNote extends AppCompatActivity {
         if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
             setTheme(R.style.AppTheme);
             root.setBackgroundColor(Color.parseColor("#FF001219"));
+            mcreatetitleofnote.setTextColor(ContextCompat.getColor(this, R.color.White));
         }else {
             setTheme(R.style.Theme_Light);
             root.setBackgroundColor(getResources().getColor(android.R.color.white));
@@ -121,9 +126,6 @@ public class CreateNote extends AppCompatActivity {
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
         audioGif.setVisibility(View.INVISIBLE);
 
-        msavenote = findViewById(R.id.savenote);
-        mcreatetitleofnote = findViewById(R.id.createtitleofnote);
-        mcreatecontentofnote = findViewById(R.id.createcontentofnote);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -144,6 +146,7 @@ public class CreateNote extends AppCompatActivity {
             public void onClick(View v) {
                 String title = mcreatetitleofnote.getText().toString();
                 String content = mcreatecontentofnote.getText().toString();
+
                 if(title.isEmpty() || content.isEmpty())
                 {
 
@@ -158,6 +161,7 @@ public class CreateNote extends AppCompatActivity {
                     Map<String, Object> note = new HashMap<>();
                     note.put("title",title);
                     note.put("content",content);
+
 
                     documentReference.set(note).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

@@ -3,6 +3,7 @@
 
     <item>
         <shape>
+
             <stroke
                 android:color="?attr/text_color"
                 android:width="@dimen/_1sdp">
