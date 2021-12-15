@@ -15,7 +15,7 @@
         android:id="@+id/empty_view"
         android:layout_width="@dimen/_150sdp"
         android:layout_height="@dimen/_150sdp"
-        android:src="@drawable/empty_gif"
+        android:src="@drawable/empty_scheduler_transparent"
         android:layout_gravity="center"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">

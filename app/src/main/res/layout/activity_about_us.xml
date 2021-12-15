@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageButton
+        android:id="@+id/back_about_us"
+        android:layout_width="@dimen/_36sdp"
+        android:layout_height="@dimen/_36sdp"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:src="@drawable/ic_baseline_arrow_back_ios_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ImageButton>
+
+    <ImageView
+        android:id="@+id/logo_about"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@drawable/login_logo">
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/logo_name_about"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_30sdp"
+        app:layout_constraintTop_toBottomOf="@id/logo_about"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@drawable/actionbar_no_background"
+        app:tint="@color/black">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/about_us_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About Us:"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/logo_name_about"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+    </TextView>
+
+    <TextView
+        android:id="@+id/about_app_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:justificationMode="inter_word"
+        android:text="Audibook is a powerful online mobile application that combines a mixed array of features that will enable you to take down notes hassle  free. It i can export Note to PDF format and offers Speech to Text Recognition for a faster way in taking down. Audibook syncs all notes across multiple mobile devices. It has its own scheduler for managin your time."
+        android:textColor="@color/black"
+        android:paddingLeft="@dimen/_20sdp"
+        android:paddingRight="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/about_us_text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+    </TextView>
+
+    <TextView
+        android:id="@+id/team_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team:"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/about_app_text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+    </TextView>
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_270sdp"
+        app:layout_constraintTop_toBottomOf="@id/team_text"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+        
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/_20sdp"
+            android:paddingRight="@dimen/_20sdp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/pic_renz"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:src="@drawable/mug_shot_renz"></ImageView>
+            <TextView
+                android:id="@+id/name_renz"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_toRightOf="@+id/pic_renz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name: Velez, Renz Brian"
+                android:textColor="@color/black">
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name_renz"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_toRightOf="@+id/pic_renz"
+                android:text="Role: App Owner, Back-end Developer, UI Designer, Tester"
+                android:textColor="@color/black"></TextView>
+            //renz
+
+            <ImageView
+                android:id="@+id/pic_blas"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_below="@+id/pic_renz"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:src="@drawable/mug_shot_blas"></ImageView>
+            <TextView
+                android:id="@+id/name_blas"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_toRightOf="@+id/pic_blas"
+                android:layout_below="@+id/pic_renz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name: Arbuyes, Blas Albert"
+                android:textColor="@color/black">
+            </TextView>
+            <TextView
+                android:layout_toRightOf="@+id/pic_blas"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_below="@+id/name_blas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Role: Team Leader, Team Manager, Scrum Master, Tester"
+                android:textColor="@color/black">
+            </TextView>
+            //blas
+
+            <ImageView
+                android:id="@+id/pic_mar"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_below="@+id/pic_blas"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:src="@drawable/mug_shot_mar"></ImageView>
+            <TextView
+                android:id="@+id/name_mar"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_toRightOf="@+id/pic_blas"
+                android:layout_below="@+id/pic_blas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name: Baltazar, Acamar"
+                android:textColor="@color/black">
+            </TextView>
+            <TextView
+                android:layout_toRightOf="@+id/pic_mar"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_below="@+id/name_mar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Role: Back-end Developer, UI Designer, Tester"
+                android:textColor="@color/black">
+            </TextView>
+            //mar
+
+            <ImageView
+                android:id="@+id/pic_krish"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_below="@+id/pic_mar"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:src="@drawable/mug_shot_krish"></ImageView>
+            <TextView
+                android:id="@+id/name_krish"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_toRightOf="@+id/pic_blas"
+                android:layout_below="@+id/pic_mar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name: Briones, Krisha Lee"
+                android:textColor="@color/black">
+            </TextView>
+            <TextView
+                android:layout_toRightOf="@+id/pic_krish"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_below="@+id/name_krish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Role: Back-end Developer, UI Designer, Tester"
+                android:textColor="@color/black">
+            </TextView>
+            //krish
+
+            <ImageView
+                android:id="@+id/pic_nina"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_below="@+id/pic_krish"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:src="@drawable/mug_shot_nina"></ImageView>
+            <TextView
+                android:id="@+id/name_nina"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_toRightOf="@+id/pic_blas"
+                android:layout_below="@+id/pic_krish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name: Nailon, Nina Bianca"
+                android:textColor="@color/black">
+            </TextView>
+            <TextView
+                android:layout_toRightOf="@+id/pic_nina"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_below="@+id/name_nina"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Role: Scrum Master, UI Designer, Tester"
+                android:textColor="@color/black">
+            </TextView>
+            //nina
+
+            <ImageView
+                android:id="@+id/pic_jp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_below="@+id/pic_nina"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:src="@drawable/mug_shot_jp">
+            </ImageView>
+            <TextView
+                android:id="@+id/name_jp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_toRightOf="@+id/pic_blas"
+                android:layout_below="@+id/pic_nina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name: Romero, John Peter"
+                android:textColor="@color/black">
+            </TextView>
+            <TextView
+                android:layout_toRightOf="@+id/pic_jp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_below="@+id/name_jp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Role: Scrum Master, UI Designer, Tester"
+                android:textColor="@color/black">
+            </TextView>
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

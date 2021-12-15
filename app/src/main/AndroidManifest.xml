@@ -68,6 +68,9 @@
         <activity
             android:name=".SettingsActivity"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AboutUs"
+            android:parentActivityName=".SettingsActivity"/>
 
         <service android:name=".service.LoadAlarmsService" />
 

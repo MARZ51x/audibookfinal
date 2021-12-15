@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SettingsActivity extends AppCompatActivity {
     //Initialize variable
     SwitchCompat switchCompat;
-    private Button button_sched, button_home, button_sched2, button_home2, logout_button;
+    private Button button_sched, button_home, button_sched2, button_home2, logout_button, about_us;
     ConstraintLayout nav, nav2, main;
     Switch aSwitch;
 
@@ -154,6 +154,14 @@ public class SettingsActivity extends AppCompatActivity {
                 HomeActivity();
             }
         });
+        about_us = (Button) findViewById(R.id.about_us_btn);
+        about_us.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                AboutUsActivity();
+            }
+        });
+
     }
 
     public void ScheduleActivity() {
@@ -165,6 +173,12 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void HomeActivity() {
         Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        overridePendingTransition(0,0);
+        finish();
+    }
+    public void AboutUsActivity() {
+        Intent intent = new Intent(this, AboutUs.class);
         startActivity(intent);
         overridePendingTransition(0,0);
         finish();
